@@ -11,7 +11,7 @@ class DatabaseHelper {
   static final DatabaseHelper instance = DatabaseHelper._init();
   static Database? _database;
   static const _databaseName = "kioske.db";
-  static const _databaseVersion = 6;
+  static const _databaseVersion = 7;
   static const _uuid = Uuid();
   static bool _ffiInitialized = false;
 
@@ -453,6 +453,26 @@ class DatabaseHelper {
         print('Error removing default categories: $e');
       }
     }
+
+    if (oldVersion < 7) {
+      // Version 7: Fix usernames to be 'admin' and 'cashier'
+      try {
+        await db.update(
+          'users',
+          {'username': 'admin'},
+          where: 'username = ?',
+          whereArgs: ['699612708'],
+        );
+        await db.update(
+          'users',
+          {'username': 'cashier'},
+          where: 'username = ?',
+          whereArgs: ['694448665'],
+        );
+      } catch (e) {
+        print('Error updating usernames: $e');
+      }
+    }
   }
 
   Future<void> _seedInitialData(Database db) async {
@@ -462,7 +482,7 @@ class DatabaseHelper {
     final adminPasswordHash = _hashPassword('admin123');
     await db.insert('users', {
       'id': _uuid.v4(),
-      'username': '699612708',
+      'username': 'admin',
       'password_hash': adminPasswordHash,
       'role': 'admin',
       'name': 'Administrator',
@@ -474,7 +494,7 @@ class DatabaseHelper {
     final cashierPasswordHash = _hashPassword('cashier123');
     await db.insert('users', {
       'id': _uuid.v4(),
-      'username': '694448665',
+      'username': 'cashier',
       'password_hash': cashierPasswordHash,
       'role': 'cashier',
       'name': 'Caissier',

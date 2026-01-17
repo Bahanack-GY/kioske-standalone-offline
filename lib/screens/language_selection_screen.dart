@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 import 'package:kioske/providers/locale_provider.dart';
-import 'package:kioske/screens/admin_dashboard_screen.dart';
 
 class LanguageSelectionScreen extends StatelessWidget {
   const LanguageSelectionScreen({super.key});
@@ -64,10 +63,8 @@ class LanguageSelectionScreen extends StatelessWidget {
   void _setLanguageAndNavigate(BuildContext context, Locale locale) {
     Provider.of<LocaleProvider>(context, listen: false).setLocale(locale);
 
-    // Navigate to Dashboard, remove all previous routes
-    Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(builder: (context) => const AdminDashboardScreen()),
-      (route) => false,
-    );
+    // No explicit navigation needed.
+    // Setting the locale will rebuild MaterialApp in main.dart,
+    // causing 'home' to switch from LanguageSelectionScreen to LoginScreen.
   }
 }
