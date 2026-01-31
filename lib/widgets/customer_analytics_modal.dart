@@ -155,8 +155,9 @@ class _CustomerAnalyticsModalState extends State<CustomerAnalyticsModal>
                     ),
                     style: const TextStyle(color: Colors.white),
                     onChanged: (value) {
-                      if (value != null)
+                      if (value != null) {
                         setState(() => _selectedPeriod = value);
+                      }
                     },
                     items: ['Ce mois', 'Cette année', 'Toujours']
                         .map((e) => DropdownMenuItem(value: e, child: Text(e)))
@@ -315,11 +316,12 @@ class _CustomerAnalyticsModalState extends State<CustomerAnalyticsModal>
                       sideTitles: SideTitles(
                         showTitles: true,
                         getTitlesWidget: (value, meta) {
-                          if (value.toInt() == 0)
+                          if (value.toInt() == 0) {
                             return const Text(
                               '2025-10-07',
                               style: TextStyle(fontSize: 10),
                             );
+                          }
                           return const Text('');
                         },
                       ),
@@ -370,11 +372,12 @@ class _CustomerAnalyticsModalState extends State<CustomerAnalyticsModal>
                       sideTitles: SideTitles(
                         showTitles: true,
                         getTitlesWidget: (value, meta) {
-                          if (value.toInt() == 0)
+                          if (value.toInt() == 0) {
                             return const Text(
                               '2025-10-07',
                               style: TextStyle(fontSize: 10),
                             );
+                          }
                           return const Text('');
                         },
                       ),

@@ -267,16 +267,16 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
 
   Widget _buildCardsView(AppLocalizations l10n, List<Employee> employees) {
     if (employees.isEmpty) {
-      return Center(child: Text("No employees found"));
+      return Center(child: Text(l10n.noEmployeesFound));
     }
     return LayoutBuilder(
       builder: (context, constraints) {
         final width = constraints.maxWidth;
         final crossAxisCount = width > 1300 ? 3 : (width > 900 ? 2 : 1);
         double childAspectRatio = 1.0;
-        if (width > 1600)
+        if (width > 1600) {
           childAspectRatio = 1.4;
-        else if (width > 1300)
+        } else if (width > 1300)
           childAspectRatio = 1.2;
         else if (width > 900)
           childAspectRatio = 1.1; // adjust based on content
@@ -306,8 +306,9 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
     if (employee.role == 'Accountant') roleLabel = l10n.accountants;
     if (employee.role == 'Co-proprietor') roleLabel = l10n.coproprietors;
 
-    if (roleLabel.endsWith('s'))
+    if (roleLabel.endsWith('s')) {
       roleLabel = roleLabel.substring(0, roleLabel.length - 1);
+    }
 
     // Gradient colors based on role? Or just generic blue-purple as in screenshot?
     // Screenshot shows same gradient for Co-proprietary (N) and Cashier (T, W). So generic.
@@ -472,7 +473,7 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
                               builder: (ctx) => AlertDialog(
                                 title: Text(l10n.delete),
                                 content: Text(
-                                  "Delete employee ${employee.name}?",
+                                  l10n.deleteEmployeeConfirm(employee.name),
                                 ),
                                 actions: [
                                   TextButton(
@@ -565,7 +566,7 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
 
   Widget _buildTableView(AppLocalizations l10n, List<Employee> employees) {
     if (employees.isEmpty) {
-      return Center(child: Text("No employees found"));
+      return Center(child: Text(l10n.noEmployeesFound));
     }
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -580,8 +581,8 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
                 border: Border.all(color: Colors.grey.shade200),
               ),
               child: DataTable(
-                headingRowColor: MaterialStateProperty.all(Colors.grey.shade50),
-                dataRowColor: MaterialStateProperty.all(Colors.white),
+                headingRowColor: WidgetStateProperty.all(Colors.grey.shade50),
+                dataRowColor: WidgetStateProperty.all(Colors.white),
                 columnSpacing: 24,
                 horizontalMargin: 24,
                 columns: [
@@ -695,7 +696,7 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
                                   builder: (ctx) => AlertDialog(
                                     title: Text(l10n.delete),
                                     content: Text(
-                                      "Delete employee ${employee.name}?",
+                                      l10n.deleteEmployeeConfirm(employee.name),
                                     ),
                                     actions: [
                                       TextButton(
@@ -746,11 +747,7 @@ class _EmployeesScreenState extends State<EmployeesScreen> {
     );
   }
 
-  Widget _buildRoleBadge(
-    AppLocalizations l10n,
-    String role, {
-    bool isSmall = false,
-  }) {
+  Widget _buildRoleBadge(AppLocalizations l10n, String role) {
     String label = role;
     if (role == 'Cashier') label = l10n.cashiers;
     if (role == 'Accountant') label = l10n.accountants;

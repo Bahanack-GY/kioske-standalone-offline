@@ -264,7 +264,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                               ),
                               const SizedBox(height: 16),
                               Text(
-                                'Aucun produit trouvé',
+                                l10n.noProductsFound,
                                 style: TextStyle(
                                   fontSize: 18,
                                   color: Colors.grey.shade600,
@@ -353,7 +353,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
     ProductProvider productProvider,
   ) {
     final category = categoryProvider.getCategoryById(product.categoryId);
-    final categoryName = category?.name ?? 'Unknown';
+    final categoryName = category?.name ?? l10n.unknown;
     final statusText = _getStatusLabel(product.status, l10n);
 
     return Container(
@@ -581,6 +581,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
     Product product,
     CategoryProvider categoryProvider,
   ) {
+    final l10n = AppLocalizations.of(context)!;
     final category = categoryProvider.getCategoryById(product.categoryId);
     showDialog(
       context: context,
@@ -588,7 +589,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
         product: {
           'id': product.id,
           'name': product.name,
-          'category': category?.name ?? 'Unknown',
+          'category': category?.name ?? l10n.unknown,
           'stock': product.stock.toString(),
           'purchasePrice': product.purchasePrice,
           'salePrice': product.salePrice,
@@ -679,7 +680,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(l10n.delete),
-        content: Text('Êtes-vous sûr de vouloir supprimer "${product.name}" ?'),
+        content: Text(l10n.deleteProductConfirm(product.name)),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
@@ -783,16 +784,16 @@ class _ProductsScreenState extends State<ProductsScreen> {
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
-                const DataColumn(
+                DataColumn(
                   label: Text(
-                    "Status",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    l10n.status,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
-                const DataColumn(
+                DataColumn(
                   label: Text(
-                    "Actions",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    l10n.actions,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
               ],

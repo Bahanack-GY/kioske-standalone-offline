@@ -365,7 +365,7 @@ class _NewEmployeeModalState extends State<NewEmployeeModal> {
         ),
         const SizedBox(height: 8),
         DropdownButtonFormField<String>(
-          value: _selectedRole,
+          initialValue: _selectedRole,
           decoration: _inputDecoration(""),
           icon: const Icon(Icons.keyboard_arrow_down, color: Colors.black54),
           items: items.map((String item) {

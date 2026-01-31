@@ -169,10 +169,10 @@ class _CustomerSelectionModalState extends State<CustomerSelectionModal> {
                                   ),
                                 ),
                                 if (customer.status == 'vip')
-                                  const Chip(
+                                  Chip(
                                     label: Text(
-                                      'VIP',
-                                      style: TextStyle(fontSize: 10),
+                                      l10n.vip,
+                                      style: const TextStyle(fontSize: 10),
                                     ),
                                     backgroundColor: Colors.amber,
                                     padding: EdgeInsets.zero,

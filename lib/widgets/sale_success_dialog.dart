@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kioske/l10n/app_localizations.dart';
 import 'package:kioske/models/order.dart';
 import 'package:kioske/providers/auth_provider.dart';
 import 'package:kioske/providers/settings_provider.dart';
@@ -89,53 +90,64 @@ class _SaleSuccessDialogState extends State<SaleSuccessDialog> {
 
     showDialog(
       context: context,
-      builder: (context) => Dialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        child: Container(
-          width: 500,
-          height: 700,
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Aperçu du reçu',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.close),
-                    onPressed: () => Navigator.of(context).pop(),
-                  ),
-                ],
-              ),
-              Expanded(
-                child: PdfPreview(
-                  build: (format) => ReceiptService.generateReceiptData(
-                    items: _items,
-                    total: _currentTotal,
-                    orderId: widget.orderId,
-                    settingsProvider: settings,
-                    user: user,
-                    customerName: widget.customerName,
-                    paymentMethod: widget.paymentMethod,
-                  ),
-                  allowPrinting: true,
-                  allowSharing: true,
-                  initialPageFormat: PdfPageFormat.roll80,
-                  pdfFileName: 'Receipt_${widget.orderId.substring(0, 8)}.pdf',
-                ),
-              ),
-            ],
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
           ),
-        ),
-      ),
+          child: Container(
+            width: 500,
+            height: 700,
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      l10n.receiptPreview,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.close),
+                      onPressed: () => Navigator.of(context).pop(),
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: PdfPreview(
+                    build: (format) => ReceiptService.generateReceiptData(
+                      items: _items,
+                      total: _currentTotal,
+                      orderId: widget.orderId,
+                      settingsProvider: settings,
+                      user: user,
+                      customerName: widget.customerName,
+                      paymentMethod: widget.paymentMethod,
+                    ),
+                    allowPrinting: true,
+                    allowSharing: true,
+                    initialPageFormat: PdfPageFormat.roll80,
+                    pdfFileName:
+                        'Receipt_${widget.orderId.substring(0, 8)}.pdf',
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: Container(
@@ -159,7 +171,7 @@ class _SaleSuccessDialogState extends State<SaleSuccessDialog> {
               ),
               const SizedBox(height: 24),
               Text(
-                'Vente réussie !',
+                l10n.saleSuccess,
                 style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -168,13 +180,15 @@ class _SaleSuccessDialogState extends State<SaleSuccessDialog> {
               ),
               const SizedBox(height: 8),
               Text(
-                'La commande #${widget.orderId.substring(0, 8).toUpperCase()} a été enregistrée.',
+                l10n.orderRecorded(
+                  widget.orderId.substring(0, 8).toUpperCase(),
+                ),
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.grey.shade600),
               ),
             ] else ...[
               Text(
-                'Modifier les prix',
+                l10n.editPrices,
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -183,7 +197,7 @@ class _SaleSuccessDialogState extends State<SaleSuccessDialog> {
               ),
               const SizedBox(height: 8),
               Text(
-                'Ces modifications n\'affecteront pas la base de données.',
+                l10n.editPricesWarning,
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.orange.shade800, fontSize: 12),
               ),
@@ -233,10 +247,10 @@ class _SaleSuccessDialogState extends State<SaleSuccessDialog> {
                           child: TextFormField(
                             controller: _priceControllers[index],
                             keyboardType: TextInputType.number,
-                            decoration: const InputDecoration(
-                              labelText: 'Prix Unit.',
+                            decoration: InputDecoration(
+                              labelText: l10n.unitPriceLabel,
                               isDense: true,
-                              border: OutlineInputBorder(),
+                              border: const OutlineInputBorder(),
                             ),
                             onChanged: (val) => _updateItemPrice(index, val),
                           ),
@@ -245,7 +259,7 @@ class _SaleSuccessDialogState extends State<SaleSuccessDialog> {
                         SizedBox(
                           width: 80,
                           child: Text(
-                            '${item.total.toStringAsFixed(0)}',
+                            item.total.toStringAsFixed(0),
                             textAlign: TextAlign.right,
                             style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
@@ -302,9 +316,12 @@ class _SaleSuccessDialogState extends State<SaleSuccessDialog> {
                     ),
                     elevation: 0,
                   ),
-                  child: const Text(
-                    'Nouvelle vente',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  child: Text(
+                    l10n.newSale,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
@@ -321,7 +338,7 @@ class _SaleSuccessDialogState extends State<SaleSuccessDialog> {
                     children: [
                       Icon(_isEditing ? Icons.check : Icons.edit, size: 18),
                       const SizedBox(width: 8),
-                      Text(_isEditing ? 'Terminer' : 'Modifier prix'),
+                      Text(_isEditing ? l10n.finish : l10n.editPrices),
                     ],
                   ),
                 ),
@@ -332,7 +349,7 @@ class _SaleSuccessDialogState extends State<SaleSuccessDialog> {
                     children: [
                       const Icon(Icons.remove_red_eye_outlined, size: 18),
                       const SizedBox(width: 8),
-                      const Text('Aperçu'),
+                      Text(l10n.preview),
                     ],
                   ),
                 ),

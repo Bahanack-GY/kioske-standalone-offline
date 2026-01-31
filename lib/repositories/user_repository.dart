@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
-import 'package:sqflite/sqflite.dart';
 import 'package:kioske/data/database_helper.dart';
 import 'package:kioske/models/user.dart';
 

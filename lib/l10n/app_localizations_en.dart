@@ -144,8 +144,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get table => 'Table';
 
   @override
-  String get searchStockPlaceholder =>
-      'Search by name, category or supplier...';
+  String get searchStockPlaceholder => 'Search by product name...';
 
   @override
   String get all => 'All';
@@ -160,7 +159,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get lowStock => 'Low Stock';
 
   @override
-  String get productsFound => 'product(s) found';
+  String get productsFound => 'Products found';
 
   @override
   String get currentStock => 'Current Stock';
@@ -409,10 +408,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get deliveryManagement => 'Delivery Management';
 
   @override
-  String get recentDeliveriesFirst => 'Most recent deliveries first';
+  String get recentDeliveriesFirst => 'Recent deliveries first';
 
   @override
-  String get newDelivery => 'New delivery';
+  String get newDelivery => 'New Delivery';
 
   @override
   String get searchBySupplier => 'Search by supplier...';
@@ -427,7 +426,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cancelled => 'Cancelled';
 
   @override
-  String get deliveriesFound => 'delivery(s) found';
+  String get deliveriesFound => 'Deliveries found';
 
   @override
   String get noDeliveriesFound => 'No deliveries found';
@@ -610,7 +609,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get deliveredProducts => 'Delivered products';
 
   @override
-  String get confirmDelivery => 'Confirm delivery';
+  String get confirmDelivery => 'Confirm Delivery';
 
   @override
   String get vendor => 'Vendor';
@@ -691,7 +690,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addCustomer => 'Add Customer';
 
   @override
-  String get searchCustomerPlaceholder => 'Search customers...';
+  String get searchCustomerPlaceholder => 'Search by name, phone...';
 
   @override
   String customersFound(Object count) {
@@ -708,7 +707,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loyal => 'Loyal';
 
   @override
-  String get newCustomer => 'New';
+  String get newCustomer => 'New Customer';
 
   @override
   String get regular => 'Regular';
@@ -780,7 +779,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get neighborhoodLabel => 'Neighborhood';
 
   @override
-  String get emailLabel => 'Email Address';
+  String get emailLabel => 'Email';
 
   @override
   String get add => 'Add';
@@ -819,13 +818,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get markAsPaid => 'Mark as Paid';
 
   @override
-  String get expenseTitle => 'Expense Title';
+  String get expenseTitle => 'Title';
 
   @override
   String get expenseAmount => 'Amount';
 
   @override
-  String get expenseDate => 'Due Date';
+  String get expenseDate => 'Date';
 
   @override
   String get expenseCategory => 'Category';
@@ -912,10 +911,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get totalPromotions => 'Total Promotions';
 
   @override
-  String get searchPromotionPlaceholder => 'Search by title or description...';
+  String get searchPromotionPlaceholder => 'Search promotions...';
 
   @override
-  String get allPromotions => 'All';
+  String get allPromotions => 'All Promotions';
 
   @override
   String get active => 'Active';
@@ -939,7 +938,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get buyXGetY => 'Buy X Get Y';
 
   @override
-  String get noPromotionsFound => '0 promotion(s) found';
+  String get noPromotionsFound => 'No promotions found';
 
   @override
   String get createPromotionTitle => 'Create a new promotion';
@@ -1032,8 +1031,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get activitiesTitle => 'Activities';
 
   @override
-  String get activitiesSubtitle =>
-      'Employee activities tracking on the platform';
+  String get activitiesSubtitle => 'View latest activities';
 
   @override
   String get allEmployees => 'All employees';
@@ -1245,4 +1243,223 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get enterEmail => 'Enter email address';
+
+  @override
+  String get comingSoon => 'Coming soon';
+
+  @override
+  String goodMorning(Object name) {
+    return 'Good morning, $name';
+  }
+
+  @override
+  String itemsHeaderCount(Object count) {
+    return '$count items';
+  }
+
+  @override
+  String get allCategories => 'All';
+
+  @override
+  String get statusLow => 'Low';
+
+  @override
+  String get statusAvailable => 'Available';
+
+  @override
+  String get statusMedium => 'Medium';
+
+  @override
+  String get orderType => 'Order Type';
+
+  @override
+  String get vip => 'VIP';
+
+  @override
+  String get receiptPreview => 'Receipt Preview';
+
+  @override
+  String get saleSuccess => 'Sale Successful!';
+
+  @override
+  String orderRecorded(Object id) {
+    return 'Order #$id has been recorded.';
+  }
+
+  @override
+  String get editPrices => 'Edit Prices';
+
+  @override
+  String get editPricesWarning => 'These changes will not affect the database.';
+
+  @override
+  String get unitPriceLabel => 'Unit Price';
+
+  @override
+  String get newSale => 'New Sale';
+
+  @override
+  String get finish => 'Finish';
+
+  @override
+  String get print => 'Print';
+
+  @override
+  String get preview => 'Preview';
+
+  @override
+  String get selectCustomerTitle => 'Select Customer';
+
+  @override
+  String get deleteCustomerTitle => 'Delete Customer';
+
+  @override
+  String get deleteCustomerConfirm =>
+      'Are you sure you want to delete this customer?';
+
+  @override
+  String pageNotImplemented(Object index) {
+    return 'Page $index not implemented';
+  }
+
+  @override
+  String get noSalesInPeriod => 'No sales for this period';
+
+  @override
+  String soldCount(Object count) {
+    return '$count sold';
+  }
+
+  @override
+  String get noProductsFound => 'No products found';
+
+  @override
+  String deleteProductConfirm(Object name) {
+    return 'Are you sure you want to delete \"$name\"?';
+  }
+
+  @override
+  String get unknown => 'Unknown';
+
+  @override
+  String get analytics => 'Analytics';
+
+  @override
+  String deleteSupplierConfirm(Object name) {
+    return 'Delete supplier \"$name\"?';
+  }
+
+  @override
+  String deleteEmployeeConfirm(Object name) {
+    return 'Delete employee \"$name\"?';
+  }
+
+  @override
+  String get noEmployeesFound => 'No employees found';
+
+  @override
+  String totalDeliveriesCount(Object count) {
+    return '(Total: $count)';
+  }
+
+  @override
+  String errorGeneric(Object error) {
+    return 'Error: $error';
+  }
+
+  @override
+  String ordersCount(Object count) {
+    return '$count orders';
+  }
+
+  @override
+  String get noSalesToday => 'No sales today';
+
+  @override
+  String get noSalesData => 'No sales data found';
+
+  @override
+  String get noPurchasesFound => 'No purchases found';
+
+  @override
+  String get noMovementsFound => 'No movements found';
+
+  @override
+  String get noEmployeeData => 'No employee data found';
+
+  @override
+  String exportSuccess(Object path) {
+    return 'Exported to $path';
+  }
+
+  @override
+  String exportFailed(Object error) {
+    return 'Export failed: $error';
+  }
+
+  @override
+  String get employeesReportTitle => 'Employees';
+
+  @override
+  String hourlySalesFor(Object date) {
+    return 'Hourly Sales for $date';
+  }
+
+  @override
+  String get lastLogin => 'Last Login';
+
+  @override
+  String get neverLoggedIn => 'Never logged in';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get searchExpensesPlaceholder => 'Search by title or description...';
+
+  @override
+  String get noExpensesFound => 'No expenses found';
+
+  @override
+  String get rejected => 'Rejected';
+
+  @override
+  String get deleteExpense => 'Delete Expense';
+
+  @override
+  String get deleteExpenseConfirm => 'Are you sure?';
+
+  @override
+  String get confirmation => 'Confirmation';
+
+  @override
+  String get userRole => 'User';
+
+  @override
+  String get deletePromotionConfirm =>
+      'Do you really want to delete this promotion?';
+
+  @override
+  String get types => 'Types';
+
+  @override
+  String get searchActivitiesPlaceholder => 'Search activities...';
+
+  @override
+  String get noActivitiesFound => 'No activities found';
+
+  @override
+  String pageIndicator(Object currentPage, Object totalPages) {
+    return 'Page $currentPage / $totalPages';
+  }
+
+  @override
+  String get address => 'Address';
+
+  @override
+  String get settingsSaved => 'Settings saved successfully';
+
+  @override
+  String get deleteDeliveryConfirm =>
+      'Are you sure you want to delete this delivery?';
 }

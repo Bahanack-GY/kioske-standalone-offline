@@ -99,7 +99,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                 ? const ActivitiesScreen()
                 : _selectedIndex == 11
                 ? const SettingsScreen()
-                : Center(child: Text("Page $_selectedIndex not implemented")),
+                : Center(child: Text(l10n.pageNotImplemented(_selectedIndex))),
           ),
         ],
       ),
@@ -511,12 +511,12 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                   ),
                   const SizedBox(height: 16),
                   if (provider.topSellingProducts.isEmpty)
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 24),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 24),
                       child: Center(
                         child: Text(
-                          'Aucune vente pour cette période',
-                          style: TextStyle(color: Colors.grey),
+                          l10n.noSalesInPeriod,
+                          style: const TextStyle(color: Colors.grey),
                         ),
                       ),
                     )
@@ -525,7 +525,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                       (product) => ListTile(
                         contentPadding: EdgeInsets.zero,
                         title: Text(product.productName),
-                        subtitle: Text('${product.quantitySold} vendus'),
+                        subtitle: Text(l10n.soldCount(product.quantitySold)),
                         trailing: Text(
                           _formatCurrency(product.totalRevenue),
                           style: const TextStyle(
@@ -556,12 +556,12 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                   ),
                   const SizedBox(height: 16),
                   if (provider.slowestSellingProducts.isEmpty)
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 24),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 24),
                       child: Center(
                         child: Text(
-                          'Aucune vente pour cette période',
-                          style: TextStyle(color: Colors.grey),
+                          l10n.noSalesInPeriod,
+                          style: const TextStyle(color: Colors.grey),
                         ),
                       ),
                     )
@@ -570,7 +570,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                       (product) => ListTile(
                         contentPadding: EdgeInsets.zero,
                         title: Text(product.productName),
-                        subtitle: Text('${product.quantitySold} vendus'),
+                        subtitle: Text(l10n.soldCount(product.quantitySold)),
                         trailing: Text(
                           _formatCurrency(product.totalRevenue),
                           style: const TextStyle(

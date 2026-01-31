@@ -265,7 +265,7 @@ class _EmployeeAnalyticsModalState extends State<EmployeeAnalyticsModal> {
                         int index = value.toInt();
                         if (index >= 0 && index <= 6) {
                           // Just showing some labels
-                          if (index % 2 == 0)
+                          if (index % 2 == 0) {
                             return Text(
                               "2026-01-${10 + index}",
                               style: TextStyle(
@@ -273,6 +273,7 @@ class _EmployeeAnalyticsModalState extends State<EmployeeAnalyticsModal> {
                                 fontSize: 10,
                               ),
                             );
+                          }
                         }
                         return const Text('');
                       },

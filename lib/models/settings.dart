@@ -41,6 +41,7 @@ class BusinessSettings {
   final String? businessAddress;
   final String? businessPhone;
   final String? businessEmail;
+  final String? businessLogo;
   final String currency;
   final String currencySymbol;
   final double taxRate;
@@ -53,6 +54,7 @@ class BusinessSettings {
     this.businessAddress,
     this.businessPhone,
     this.businessEmail,
+    this.businessLogo,
     this.currency = 'XAF',
     this.currencySymbol = 'FCFA',
     this.taxRate = 0.0,
@@ -72,6 +74,7 @@ class BusinessSettings {
       businessAddress: getValue('business_address', ''),
       businessPhone: getValue('business_phone', ''),
       businessEmail: getValue('business_email', ''),
+      businessLogo: getValue('business_logo', ''),
       currency: getValue('currency', 'XAF'),
       currencySymbol: getValue('currency_symbol', 'FCFA'),
       taxRate: double.tryParse(getValue('tax_rate', '0')) ?? 0.0,
@@ -107,6 +110,12 @@ class BusinessSettings {
         id: 'business_email',
         key: 'business_email',
         value: businessEmail ?? '',
+        updatedAt: now,
+      ),
+      AppSettings(
+        id: 'business_logo',
+        key: 'business_logo',
+        value: businessLogo ?? '',
         updatedAt: now,
       ),
       AppSettings(

@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:kioske/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -14,9 +16,8 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  final _formKey = GlobalKey<FormState>();
-
   bool _initialized = false;
+  File? _selectedLogo;
 
   // General Settings Controllers
   final TextEditingController _shopNameController = TextEditingController();
@@ -78,6 +79,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
       _phoneController.text = settings.businessPhone ?? '';
       _emailController.text = settings.businessEmail ?? '';
       _selectedCurrency = settings.currency;
+
+      if (settings.businessLogo != null && settings.businessLogo!.isNotEmpty) {
+        final file = File(settings.businessLogo!);
+        if (file.existsSync()) {
+          _selectedLogo = file;
+        }
+      }
+
       _initialized = true;
     }
 
@@ -131,6 +140,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     businessAddress: _addressController.text,
                     businessPhone: _phoneController.text,
                     businessEmail: _emailController.text,
+                    businessLogo: _selectedLogo?.path,
                     currency: _selectedCurrency,
                     // Preserve other settings
                     currencySymbol: settings.currencySymbol,
@@ -245,7 +255,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
             // Address
             Text(
-              "Address",
+              l10n.address,
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
@@ -272,7 +282,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
             // Phone
             Text(
-              "Phone",
+              l10n.phone,
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
@@ -299,7 +309,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
             // Email
             Text(
-              "Email",
+              l10n.emailLabel,
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
@@ -343,14 +353,26 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     color: Colors.grey.shade100,
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(color: Colors.grey.shade300),
+                    image: _selectedLogo != null
+                        ? DecorationImage(
+                            image: FileImage(_selectedLogo!),
+                            fit: BoxFit.cover,
+                          )
+                        : null,
                   ),
-                  child: const Center(
-                    child: Icon(Icons.storefront, size: 40, color: Colors.grey),
-                  ),
+                  child: _selectedLogo == null
+                      ? const Center(
+                          child: Icon(
+                            Icons.storefront,
+                            size: 40,
+                            color: Colors.grey,
+                          ),
+                        )
+                      : null,
                 ),
                 const SizedBox(width: 16),
                 OutlinedButton.icon(
-                  onPressed: () {},
+                  onPressed: _pickImage,
                   icon: const Icon(Icons.upload),
                   label: Text(l10n.changeLogo),
                   style: OutlinedButton.styleFrom(
@@ -383,7 +405,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                       const SizedBox(height: 8),
                       DropdownButtonFormField<String>(
-                        value: _selectedCurrency,
+                        initialValue: _selectedCurrency,
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.grey.shade50,
@@ -411,8 +433,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           ),
                         ],
                         onChanged: (val) {
-                          if (val != null)
+                          if (val != null) {
                             setState(() => _selectedCurrency = val);
+                          }
                         },
                       ),
                     ],
@@ -433,7 +456,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                       const SizedBox(height: 8),
                       DropdownButtonFormField<String>(
-                        value: _selectedLanguage,
+                        initialValue: _selectedLanguage,
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.grey.shade50,
@@ -454,8 +477,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           DropdownMenuItem(value: 'en', child: Text('English')),
                         ],
                         onChanged: (val) {
-                          if (val != null)
+                          if (val != null) {
                             setState(() => _selectedLanguage = val);
+                          }
                         },
                       ),
                     ],
@@ -556,5 +580,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
       ],
     );
+  }
+
+  Future<void> _pickImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      if (mounted) {
+        setState(() {
+          _selectedLogo = File(pickedFile.path);
+        });
+      }
+    }
   }
 }

@@ -333,7 +333,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                     color: Colors.blue,
                   ),
                   label: Text(
-                    "Analytics", // TODO: localize
+                    l10n.analytics,
                     style: const TextStyle(color: Colors.blue, fontSize: 12),
                   ),
                   style: ElevatedButton.styleFrom(
@@ -380,7 +380,9 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                       context: context,
                       builder: (ctx) => AlertDialog(
                         title: Text(l10n.delete),
-                        content: Text("Delete supplier ${supplier.name}?"),
+                        content: Text(
+                          l10n.deleteSupplierConfirm(supplier.name),
+                        ),
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.pop(ctx),
@@ -393,9 +395,9 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                               );
                               Navigator.pop(ctx);
                             },
-                            child: const Text(
-                              "Delete",
-                              style: TextStyle(color: Colors.red),
+                            child: Text(
+                              l10n.delete,
+                              style: const TextStyle(color: Colors.red),
                             ),
                           ),
                         ],
@@ -468,8 +470,8 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                 border: Border.all(color: Colors.grey.shade200),
               ),
               child: DataTable(
-                headingRowColor: MaterialStateProperty.all(Colors.grey.shade50),
-                dataRowColor: MaterialStateProperty.all(Colors.white),
+                headingRowColor: WidgetStateProperty.all(Colors.grey.shade50),
+                dataRowColor: WidgetStateProperty.all(Colors.white),
                 columnSpacing: 24,
                 horizontalMargin: 24,
                 columns: [
@@ -518,7 +520,7 @@ class _SuppliersScreenState extends State<SuppliersScreen> {
                       DataCell(Text(supplier.address ?? '')),
                       DataCell(
                         Text(
-                          "${stat.totalItemsSupplied} (Total: ${stat.totalDeliveries})",
+                          "${stat.totalItemsSupplied} ${l10n.totalDeliveriesCount(stat.totalDeliveries)}",
                         ),
                       ),
                       DataCell(

@@ -508,8 +508,9 @@ class _StockEditModalState extends State<StockEditModal> {
                     InkWell(
                       onTap: () {
                         final current = int.tryParse(controller.text) ?? 0;
-                        if (current > 0)
+                        if (current > 0) {
                           controller.text = (current - 1).toString();
+                        }
                       },
                       child: const Icon(
                         Icons.arrow_drop_down,

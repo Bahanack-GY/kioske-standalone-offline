@@ -513,7 +513,7 @@ class ProductReportDetailScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            label + ":",
+            "$label:",
             style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
           ),
           Text(

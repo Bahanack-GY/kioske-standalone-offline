@@ -90,15 +90,15 @@ class _ReportsScreenState extends State<ReportsScreen> {
                     _selectedReportType,
                     context,
                   );
-                  if (context.mounted && path != null) {
+                  if (mounted && path != null) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text("Exported to $path")),
+                      SnackBar(content: Text(l10n.exportSuccess(path))),
                     );
                   }
                 } catch (e) {
-                  if (context.mounted) {
+                  if (mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text("Export failed: $e")),
+                      SnackBar(content: Text(l10n.exportFailed(e.toString()))),
                     );
                   }
                 }
@@ -148,24 +148,21 @@ class _ReportsScreenState extends State<ReportsScreen> {
                 color: Colors.grey,
                 constraints: const BoxConstraints(minHeight: 40, minWidth: 80),
                 renderBorder: false,
-                children: const [
+                children: [
                   Row(
                     children: [
                       Icon(Icons.grid_view, size: 18),
                       SizedBox(width: 8),
-                      Text(
-                        "Cartes",
-                        style: TextStyle(fontSize: 13),
-                      ), // TODO: localize
+                      Text(l10n.cards, style: const TextStyle(fontSize: 13)),
                     ],
                   ),
                   Row(
                     children: [
-                      Icon(Icons.table_chart, size: 18),
-                      SizedBox(width: 8),
+                      const Icon(Icons.table_chart, size: 18),
+                      const SizedBox(width: 8),
                       Text(
-                        "Tableau",
-                        style: TextStyle(fontSize: 13),
+                        l10n.table,
+                        style: const TextStyle(fontSize: 13),
                       ), // TODO: localize
                     ],
                   ),
@@ -241,7 +238,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
                 ),
                 const SizedBox(width: 16),
                 _buildReportTypeCard(
-                  'Employees', // Localization needed
+                  l10n.employeesReportTitle, // Localization needed
                   Icons.badge,
                   'employees',
                   isActive: _selectedReportType == 'employees',
@@ -310,11 +307,13 @@ class _ReportsScreenState extends State<ReportsScreen> {
               return const Center(child: CircularProgressIndicator());
             }
             if (snapshot.hasError) {
-              return Center(child: Text("Error: ${snapshot.error}"));
+              return Center(
+                child: Text(l10n.errorGeneric(snapshot.error.toString())),
+              );
             }
             final products = snapshot.data ?? [];
             if (products.isEmpty) {
-              return const Center(child: Text("No products found"));
+              return Center(child: Text(l10n.noProductsFound));
             }
             return _buildProductsGrid(l10n, products);
           },
@@ -327,10 +326,12 @@ class _ReportsScreenState extends State<ReportsScreen> {
               return const Center(child: CircularProgressIndicator());
             }
             if (snapshot.hasError) {
-              return Center(child: Text("Error: ${snapshot.error}"));
+              return Center(
+                child: Text(l10n.errorGeneric(snapshot.error.toString())),
+              );
             }
             if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return const Center(child: Text("No customers found"));
+              return Center(child: Text(l10n.noCustomersFound));
             }
 
             // For simplicity using a ListView for customers
@@ -342,7 +343,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
                   child: ListTile(
                     title: Text(c.name),
                     subtitle: Text(c.phone ?? ''),
-                    trailing: Text("${c.orderCount} orders"),
+                    trailing: Text(l10n.ordersCount(c.orderCount)),
                   ),
                 );
               },
@@ -357,10 +358,12 @@ class _ReportsScreenState extends State<ReportsScreen> {
               return const Center(child: CircularProgressIndicator());
             }
             if (snapshot.hasError) {
-              return Center(child: Text("Error: ${snapshot.error}"));
+              return Center(
+                child: Text(l10n.errorGeneric(snapshot.error.toString())),
+              );
             }
             if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return const Center(child: Text("No movements found"));
+              return Center(child: Text(l10n.noMovementsFound));
             }
 
             return ListView.builder(
@@ -369,9 +372,9 @@ class _ReportsScreenState extends State<ReportsScreen> {
                 final m = snapshot.data![index];
                 return Card(
                   child: ListTile(
-                    title: Text("${m.type} - Quantity: ${m.quantity}"),
+                    title: Text("${m.type} - ${l10n.quantity}: ${m.quantity}"),
                     subtitle: Text(
-                      "Product ID: ${m.productId}\nDate: ${DateFormat('yyyy-MM-dd HH:mm').format(m.createdAt)}",
+                      "Product ID: ${m.productId}\n${l10n.date}: ${DateFormat('yyyy-MM-dd HH:mm').format(m.createdAt)}",
                     ),
                     isThreeLine: true,
                     trailing: Text(m.reason ?? ''),
@@ -390,11 +393,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
       case 'employees':
         return _buildEmployeeReport(l10n);
       default:
-        return Center(
-          child: Text(
-            "Report type '$_selectedReportType' implementation coming soon",
-          ),
-        );
+        return Center(child: Text(l10n.comingSoon));
     }
   }
 
@@ -524,7 +523,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
         }
         final data = snapshot.data ?? [];
         if (data.isEmpty) {
-          return const Center(child: Text("No sales data found"));
+          return Center(child: Text(l10n.noSalesData));
         }
 
         return Column(
@@ -544,7 +543,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
                           color: Colors.green,
                         ),
                       ),
-                      subtitle: Text("${dayData['count']} orders"),
+                      subtitle: Text(l10n.ordersCount(dayData['count'])),
                     ),
                   );
                 },
@@ -571,7 +570,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
         }
         final data = snapshot.data ?? {};
         if (data.isEmpty) {
-          return const Center(child: Text("No sales today"));
+          return Center(child: Text(l10n.noSalesToday));
         }
 
         final maxSale = data.values.isEmpty
@@ -583,7 +582,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
           child: Column(
             children: [
               Text(
-                "Hourly Sales for ${DateFormat('yyyy-MM-dd').format(date)}",
+                l10n.hourlySalesFor(DateFormat('yyyy-MM-dd').format(date)),
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -642,7 +641,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
         }
         final purchases = (snapshot.data as List<dynamic>?) ?? [];
         if (purchases.isEmpty) {
-          return const Center(child: Text("No purchases found"));
+          return Center(child: Text(l10n.noPurchasesFound));
         }
 
         return ListView.builder(
@@ -651,9 +650,9 @@ class _ReportsScreenState extends State<ReportsScreen> {
             final p = purchases[index] as SupplyDelivery;
             return Card(
               child: ListTile(
-                title: Text("Supplier: ${p.supplierName}"),
+                title: Text("${l10n.supplier}: ${p.supplierName}"),
                 subtitle: Text(
-                  "Status: ${p.status}\nDate: ${DateFormat('yyyy-MM-dd').format(p.createdAt)}",
+                  "${l10n.status}: ${p.status}\n${l10n.date}: ${DateFormat('yyyy-MM-dd').format(p.createdAt)}",
                 ),
                 isThreeLine: true,
                 trailing: Text(
@@ -680,7 +679,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
         }
         final data = snapshot.data ?? [];
         if (data.isEmpty) {
-          return const Center(child: Text("No employee data found"));
+          return Center(child: Text(l10n.noEmployeeData));
         }
 
         return ListView.builder(
@@ -699,10 +698,10 @@ class _ReportsScreenState extends State<ReportsScreen> {
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Role: ${emp['role']}"),
+                      Text("${l10n.role}: ${emp['role']}"),
                       if (emp['lastLogin'] != null)
                         Text(
-                          "Last Login: ${DateFormat('MM/dd HH:mm').format(emp['lastLogin'] as DateTime)}",
+                          "${l10n.lastLogin}: ${DateFormat('MM/dd HH:mm').format(emp['lastLogin'] as DateTime)}",
                           style: TextStyle(
                             fontSize: 12,
                             color: Colors.grey.shade600,
@@ -710,7 +709,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
                         )
                       else
                         Text(
-                          "Never logged in",
+                          l10n.neverLoggedIn,
                           style: TextStyle(
                             fontSize: 12,
                             color: Colors.grey.shade400,
@@ -723,7 +722,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        "Today: ${emp['todaySales']} FCFA",
+                        "${l10n.today}: ${emp['todaySales']} FCFA",
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.blue,
@@ -731,14 +730,14 @@ class _ReportsScreenState extends State<ReportsScreen> {
                         ),
                       ),
                       Text(
-                        "Total: ${emp['totalSales']} FCFA",
+                        "${l10n.total}: ${emp['totalSales']} FCFA",
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.green,
                         ),
                       ),
                       Text(
-                        "${emp['orderCount']} orders",
+                        l10n.ordersCount(emp['orderCount']),
                         style: TextStyle(
                           fontSize: 12,
                           color: Colors.grey.shade600,

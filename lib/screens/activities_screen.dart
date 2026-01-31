@@ -125,7 +125,7 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
                         child: TextField(
                           controller: _searchController,
                           decoration: InputDecoration(
-                            hintText: 'Rechercher...',
+                            hintText: l10n.searchActivitiesPlaceholder,
                             prefixIcon: const Icon(Icons.search),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8),
@@ -196,26 +196,34 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
                             children: [
                               Expanded(
                                 flex: 2,
-                                child: _buildHeaderCell('EMPLOYÉ'),
+                                child: _buildHeaderCell(
+                                  l10n.employee.toUpperCase(),
+                                ),
                               ),
                               Expanded(
                                 flex: 4,
-                                child: _buildHeaderCell('ACTIVITÉ'),
+                                child: _buildHeaderCell(
+                                  l10n.activity.toUpperCase(),
+                                ),
                               ),
                               Expanded(
                                 flex: 2,
-                                child: _buildHeaderCell('DATE'),
+                                child: _buildHeaderCell(
+                                  l10n.date.toUpperCase(),
+                                ),
                               ),
                               Expanded(
                                 flex: 1,
-                                child: _buildHeaderCell('HEURE'),
+                                child: _buildHeaderCell(
+                                  l10n.time.toUpperCase(),
+                                ),
                               ),
-                              const SizedBox(
+                              SizedBox(
                                 width: 60,
                                 child: Center(
                                   child: Text(
-                                    'ACTIONS',
-                                    style: TextStyle(
+                                    l10n.actionsColumn.toUpperCase(),
+                                    style: const TextStyle(
                                       color: Colors.grey,
                                       fontSize: 12,
                                       fontWeight: FontWeight.bold,
@@ -229,9 +237,9 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
                         const Divider(height: 1),
                         // List Items
                         if (provider.activities.isEmpty)
-                          const Padding(
-                            padding: EdgeInsets.all(32.0),
-                            child: Text("Aucune activité trouvée"),
+                          Padding(
+                            padding: const EdgeInsets.all(32.0),
+                            child: Text(l10n.noActivitiesFound),
                           )
                         else
                           ListView.separated(
@@ -261,7 +269,10 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
                                       : null,
                                 ),
                                 Text(
-                                  'Page ${provider.currentPage} / ${provider.totalPages}',
+                                  l10n.pageIndicator(
+                                    provider.currentPage,
+                                    provider.totalPages,
+                                  ),
                                 ),
                                 IconButton(
                                   icon: const Icon(Icons.chevron_right),
@@ -332,7 +343,7 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(
-                        'User',
+                        l10n.userRole,
                         style: TextStyle(
                           fontSize: 10,
                           color: Colors.grey.shade700,

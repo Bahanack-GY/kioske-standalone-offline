@@ -78,7 +78,7 @@ class _StockOrderModalState extends State<StockOrderModal> {
             const SizedBox(height: 16),
 
             // Supplier
-            _buildLabel(l10n.supplier + " *"),
+            _buildLabel("${l10n.supplier} *"),
             const SizedBox(height: 8),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -104,7 +104,7 @@ class _StockOrderModalState extends State<StockOrderModal> {
             const SizedBox(height: 16),
 
             // Unit Price
-            _buildLabel(l10n.unitPrice + " (FCFA) *"),
+            _buildLabel("${l10n.unitPrice} (FCFA) *"),
             const SizedBox(height: 8),
             _buildNumberInput(_priceController),
             const SizedBox(height: 16),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:kioske/l10n/app_localizations.dart';
-import 'package:kioske/models/promotion.dart';
 import 'package:kioske/providers/promotion_provider.dart';
 import 'package:kioske/widgets/new_promotion_modal.dart';
 import 'package:provider/provider.dart';
@@ -138,25 +137,19 @@ class _PromotionsScreenState extends State<PromotionsScreen> {
                 color: Colors.grey,
                 constraints: const BoxConstraints(minHeight: 40, minWidth: 80),
                 renderBorder: false,
-                children: const [
+                children: [
                   Row(
                     children: [
                       Icon(Icons.grid_view, size: 18),
                       SizedBox(width: 8),
-                      Text(
-                        "Cartes",
-                        style: TextStyle(fontSize: 13),
-                      ), // TODO: localize
+                      Text(l10n.cards, style: const TextStyle(fontSize: 13)),
                     ],
                   ),
                   Row(
                     children: [
-                      Icon(Icons.table_chart, size: 18),
-                      SizedBox(width: 8),
-                      Text(
-                        "Tableau",
-                        style: TextStyle(fontSize: 13),
-                      ), // TODO: localize
+                      const Icon(Icons.table_chart, size: 18),
+                      const SizedBox(width: 8),
+                      Text(l10n.table, style: const TextStyle(fontSize: 13)),
                     ],
                   ),
                 ],
@@ -346,9 +339,12 @@ class _PromotionsScreenState extends State<PromotionsScreen> {
           const SizedBox(height: 16),
           Row(
             children: [
-              const Text(
-                "Types: ",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+              Text(
+                "${l10n.types}: ",
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 13,
+                ),
               ),
               const SizedBox(width: 8),
               _buildTypeLink(l10n.allPromotions, 'Tous', provider),
@@ -447,7 +443,7 @@ class _PromotionsScreenState extends State<PromotionsScreen> {
             Icon(Icons.search_off, size: 64, color: Colors.grey.shade300),
             const SizedBox(height: 16),
             Text(
-              "Aucune promotion trouvée",
+              l10n.noPromotionsFound,
               style: TextStyle(color: Colors.grey.shade500),
             ),
           ],
@@ -529,14 +525,12 @@ class _PromotionsScreenState extends State<PromotionsScreen> {
                     showDialog(
                       context: context,
                       builder: (context) => AlertDialog(
-                        title: const Text('Confirmation'),
-                        content: const Text(
-                          'Voulez-vous vraiment supprimer cette promotion ?',
-                        ),
+                        title: Text(l10n.confirmation),
+                        content: Text(l10n.deletePromotionConfirm),
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.pop(context),
-                            child: const Text('Annuler'),
+                            child: Text(l10n.cancel),
                           ),
                           TextButton(
                             onPressed: () async {
@@ -545,9 +539,9 @@ class _PromotionsScreenState extends State<PromotionsScreen> {
                                   .deletePromotion(promo.id);
                               if (context.mounted) Navigator.pop(context);
                             },
-                            child: const Text(
-                              'Supprimer',
-                              style: TextStyle(color: Colors.red),
+                            child: Text(
+                              l10n.delete,
+                              style: const TextStyle(color: Colors.red),
                             ),
                           ),
                         ],

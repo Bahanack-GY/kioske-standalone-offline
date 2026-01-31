@@ -502,5 +502,208 @@
     "neighborhoodLabel": "Neighborhood",
     "emailLabel": "Email Address",
     "searchCustomerPlaceholder": "Search customers...",
-    "seeMore": "See More"
+    "seeMore": "See More",
+    "comingSoon": "Coming Soon",
+    "goodMorning": "Good morning, {name}",
+    "@goodMorning": {
+        "placeholders": {
+            "name": {}
+        }
+    },
+    "itemsHeaderCount": "{count} items",
+    "@itemsHeaderCount": {
+        "placeholders": {
+            "count": {}
+        }
+    },
+    "allCategories": "All",
+    "statusLow": "Low",
+    "statusAvailable": "Available",
+    "statusMedium": "Medium",
+    "orderType": "Order Type",
+    "vip": "VIP",
+    "receiptPreview": "Receipt Preview",
+    "saleSuccess": "Sale Successful!",
+    "orderRecorded": "Order #{id} has been recorded.",
+    "@orderRecorded": {
+        "placeholders": {
+            "id": {}
+        }
+    },
+    "editPrices": "Edit Prices",
+    "editPricesWarning": "These changes will not affect the database.",
+    "unitPriceLabel": "Unit Price",
+    "newSale": "New Sale",
+    "finish": "Finish",
+    "print": "Print",
+    "preview": "Preview",
+    "selectCustomerTitle": "Select Customer",
+    "deleteCustomerTitle": "Delete Customer",
+    "deleteCustomerConfirm": "Are you sure you want to delete this customer?",
+    "pageNotImplemented": "Page {index} not implemented",
+    "@pageNotImplemented": {
+        "placeholders": {
+            "index": {}
+        }
+    },
+    "noSalesInPeriod": "No sales for this period",
+    "soldCount": "{count} sold",
+    "@soldCount": {
+        "placeholders": {
+            "count": {}
+        }
+    },
+    "noProductsFound": "No products found",
+    "deleteProductConfirm": "Are you sure you want to delete \"{name}\"?",
+    "@deleteProductConfirm": {
+        "placeholders": {
+            "name": {}
+        }
+    },
+    "unknown": "Unknown",
+    "analytics": "Analytics",
+    "deleteSupplierConfirm": "Delete supplier \"{name}\"?",
+    "@deleteSupplierConfirm": {
+        "placeholders": {
+            "name": {}
+        }
+    },
+    "deleteEmployeeConfirm": "Delete employee \"{name}\"?",
+    "@deleteEmployeeConfirm": {
+        "placeholders": {
+            "name": {}
+        }
+    },
+    "noEmployeesFound": "No employees found",
+    "totalDeliveriesCount": "(Total: {count})",
+    "errorGeneric": "Error: {error}",
+    "@errorGeneric": {
+        "placeholders": {
+            "error": {}
+        }
+    },
+    "ordersCount": "{count} orders",
+    "@ordersCount": {
+        "placeholders": {
+            "count": {}
+        }
+    },
+    "noSalesToday": "No sales today",
+    "noSalesData": "No sales data found",
+    "noPurchasesFound": "No purchases found",
+    "noMovementsFound": "No movements found",
+    "noEmployeeData": "No employee data found",
+    "noCustomersFound": "No customers found",
+    "exportSuccess": "Exported to {path}",
+    "@exportSuccess": {
+        "placeholders": {
+            "path": {}
+        }
+    },
+    "exportFailed": "Export failed: {error}",
+    "@exportFailed": {
+        "placeholders": {
+            "error": {}
+        }
+    },
+    "comingSoon": "Coming soon",
+    "quantity": "Quantity",
+    "date": "Date",
+    "supplier": "Supplier",
+    "employeesReportTitle": "Employees",
+    "hourlySalesFor": "Hourly Sales for {date}",
+    "@hourlySalesFor": {
+        "placeholders": {
+            "date": {}
+        }
+    },
+    "lastLogin": "Last Login",
+    "neverLoggedIn": "Never logged in",
+    "today": "Today",
+    "total": "Total",
+    "productsFound": "Products found",
+    "searchStockPlaceholder": "Search by product name...",
+    "searchExpensesPlaceholder": "Search by title or description...",
+    "noExpensesFound": "No expenses found",
+    "rejected": "Rejected",
+    "deleteExpense": "Delete Expense",
+    "deleteExpenseConfirm": "Are you sure?",
+    "markAsPaid": "Mark as Paid",
+    "pending": "Pending",
+    "paid": "Paid",
+    "overdue": "Overdue",
+    "totalExpenses": "Total Expenses",
+    "paidExpenses": "Paid Expenses",
+    "pendingExpenses": "Pending Expenses",
+    "overdueExpenses": "Overdue Expenses",
+    "expenseTitle": "Title",
+    "confirmation": "Confirmation",
+    "userRole": "User",
+    "expenseCategory": "Category",
+    "expenseAmount": "Amount",
+    "expenseDate": "Date",
+    "expenseStatus": "Status",
+    "promotionsManagement": "Promotions Management",
+    "createPromotion": "Create Promotion",
+    "totalPromotions": "Total Promotions",
+    "activePromotions": "Active Promotions",
+    "expiredPromotions": "Expired Promotions",
+    "totalReductions": "Total Reductions",
+    "searchPromotionPlaceholder": "Search promotions...",
+    "allPromotions": "All Promotions",
+    "noPromotionsFound": "No promotions found",
+    "deletePromotionConfirm": "Do you really want to delete this promotion?",
+    "types": "Types",
+    "percentage": "Percentage",
+    "fixedAmount": "Fixed Amount",
+    "buyXGetY": "Buy X Get Y",
+    "active": "Active",
+    "expired": "Expired",
+    "inactive": "Inactive",
+    "activitiesTitle": "Activities",
+    "activitiesSubtitle": "View latest activities",
+    "searchActivitiesPlaceholder": "Search activities...",
+    "employee": "Employee",
+    "activity": "Activity",
+    "time": "Time",
+    "noActivitiesFound": "No activities found",
+    "pageIndicator": "Page {currentPage} / {totalPages}",
+    "generalSettings": "General Settings",
+    "shopName": "Shop Name",
+    "address": "Address",
+    "phone": "Phone",
+    "emailLabel": "Email",
+    "shopLogo": "Shop Logo",
+    "changeLogo": "Change Logo",
+    "currency": "Currency",
+    "language": "Language",
+    "security": "Security",
+    "changePassword": "Change Password",
+    "oldPassword": "Old Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "saveSettings": "Save Settings",
+    "settingsSaved": "Settings saved successfully",
+    "loyal": "Loyal",
+    "newCustomer": "New Customer",
+    "deleteCustomerTitle": "Delete Customer",
+    "deleteCustomerConfirm": "Are you sure you want to delete this customer?",
+    "customersManagement": "Customers Management",
+    "addCustomer": "Add Customer",
+    "searchCustomerPlaceholder": "Search by name, phone...",
+    "customersFound": "{count} customers found",
+    "totalPurchases": "Total Purchases",
+    "memberSince": "Member Since",
+    "deliveryManagement": "Delivery Management",
+    "recentDeliveriesFirst": "Recent deliveries first",
+    "newDelivery": "New Delivery",
+    "searchBySupplier": "Search by supplier...",
+    "deliveriesFound": "Deliveries found",
+    "noDeliveriesFound": "No deliveries found",
+    "confirmDelivery": "Confirm Delivery",
+    "deleteDeliveryConfirm": "Are you sure you want to delete this delivery?",
+    "vendor": "Vendor",
+    "deliveryDate": "Delivery Date",
+    "numberOfItems": "Number of items",
+    "totalAmount": "Total Amount"
 }

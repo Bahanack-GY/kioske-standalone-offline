@@ -1,9 +1,11 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:kioske/l10n/app_localizations.dart';
 import 'package:kioske/providers/auth_provider.dart';
+import 'package:kioske/providers/settings_provider.dart';
 import 'package:kioske/repositories/employee_repository.dart';
 import 'package:kioske/models/employee.dart';
-import 'package:provider/provider.dart';
 
 class Sidebar extends StatefulWidget {
   final int selectedIndex;
@@ -26,6 +28,7 @@ class _SidebarState extends State<Sidebar> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final settings = context.watch<SettingsProvider>().settings;
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
@@ -42,22 +45,44 @@ class _SidebarState extends State<Sidebar> {
               children: [
                 if (_isExpanded) ...[
                   // Expanded Logo
-                  Image.asset('assets/images/Logo-3.png', height: 40),
+                  if (settings.businessLogo != null &&
+                      settings.businessLogo!.isNotEmpty &&
+                      File(settings.businessLogo!).existsSync())
+                    Image.file(
+                      File(settings.businessLogo!),
+                      height: 40,
+                      fit: BoxFit.contain,
+                    )
+                  else
+                    Image.asset('assets/images/Logo-3.png', height: 40),
                   const SizedBox(width: 8),
-                  const Text(
-                    "Kioské",
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Color(
-                        0xFF1A2B3C,
-                      ), // Dark blue/black color from image
+                  Expanded(
+                    child: Text(
+                      settings.businessName,
+                      style: const TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 20, // Slightly smaller to fit dynamic names
+                        fontWeight: FontWeight.bold,
+                        color: Color(
+                          0xFF1A2B3C,
+                        ), // Dark blue/black color from image
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                     ),
                   ),
-                  const Spacer(),
+                  const SizedBox(width: 4),
                 ] else
-                  // Collapsed Logo (Icon only)
+                // Collapsed Logo (Icon only) - Usually just the logo
+                if (settings.businessLogo != null &&
+                    settings.businessLogo!.isNotEmpty &&
+                    File(settings.businessLogo!).existsSync())
+                  Image.file(
+                    File(settings.businessLogo!),
+                    height: 40,
+                    fit: BoxFit.contain,
+                  )
+                else
                   Image.asset('assets/images/Logo-3.png', height: 40),
 
                 if (_isExpanded)

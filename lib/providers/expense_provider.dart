@@ -36,17 +36,21 @@ class ExpenseProvider with ChangeNotifier {
       if (!matchesSearch) return false;
 
       // Status filter
-      if (_selectedStatus == "Payées" && expense.status != 'approved')
+      if (_selectedStatus == "Payées" && expense.status != 'approved') {
         return false; // Assuming 'approved' mapping
-      if (_selectedStatus == "En attente" && expense.status != 'pending')
+      }
+      if (_selectedStatus == "En attente" && expense.status != 'pending') {
         return false;
-      if (_selectedStatus == "En retard" && expense.status != 'overdue')
+      }
+      if (_selectedStatus == "En retard" && expense.status != 'overdue') {
         return false; // Assuming 'overdue' status exists or mapping
+      }
 
       // Category filter
       if (_selectedCategory != "Toutes" &&
-          expense.category != _selectedCategory)
+          expense.category != _selectedCategory) {
         return false;
+      }
 
       return true;
     }).toList();

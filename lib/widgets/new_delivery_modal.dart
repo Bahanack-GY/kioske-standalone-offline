@@ -213,8 +213,9 @@ class _NewDeliveryModalState extends State<NewDeliveryModal> {
                             firstDate: DateTime(2000),
                             lastDate: DateTime(2100),
                           );
-                          if (picked != null)
+                          if (picked != null) {
                             setState(() => _selectedDate = picked);
+                          }
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(

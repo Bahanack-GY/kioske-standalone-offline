@@ -164,8 +164,9 @@ class _NewCustomerModalState extends State<NewCustomerModal> {
                                     currentUserName: currentUser?.name,
                                   );
                                 }
-                                if (context.mounted)
+                                if (context.mounted) {
                                   Navigator.of(context).pop();
+                                }
                               }
                             },
                             style: ElevatedButton.styleFrom(

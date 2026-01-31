@@ -371,7 +371,7 @@ abstract class AppLocalizations {
   /// No description provided for @searchStockPlaceholder.
   ///
   /// In en, this message translates to:
-  /// **'Search by name, category or supplier...'**
+  /// **'Search by product name...'**
   String get searchStockPlaceholder;
 
   /// No description provided for @all.
@@ -401,7 +401,7 @@ abstract class AppLocalizations {
   /// No description provided for @productsFound.
   ///
   /// In en, this message translates to:
-  /// **'product(s) found'**
+  /// **'Products found'**
   String get productsFound;
 
   /// No description provided for @currentStock.
@@ -893,13 +893,13 @@ abstract class AppLocalizations {
   /// No description provided for @recentDeliveriesFirst.
   ///
   /// In en, this message translates to:
-  /// **'Most recent deliveries first'**
+  /// **'Recent deliveries first'**
   String get recentDeliveriesFirst;
 
   /// No description provided for @newDelivery.
   ///
   /// In en, this message translates to:
-  /// **'New delivery'**
+  /// **'New Delivery'**
   String get newDelivery;
 
   /// No description provided for @searchBySupplier.
@@ -929,7 +929,7 @@ abstract class AppLocalizations {
   /// No description provided for @deliveriesFound.
   ///
   /// In en, this message translates to:
-  /// **'delivery(s) found'**
+  /// **'Deliveries found'**
   String get deliveriesFound;
 
   /// No description provided for @noDeliveriesFound.
@@ -1283,7 +1283,7 @@ abstract class AppLocalizations {
   /// No description provided for @confirmDelivery.
   ///
   /// In en, this message translates to:
-  /// **'Confirm delivery'**
+  /// **'Confirm Delivery'**
   String get confirmDelivery;
 
   /// No description provided for @vendor.
@@ -1433,7 +1433,7 @@ abstract class AppLocalizations {
   /// No description provided for @searchCustomerPlaceholder.
   ///
   /// In en, this message translates to:
-  /// **'Search customers...'**
+  /// **'Search by name, phone...'**
   String get searchCustomerPlaceholder;
 
   /// No description provided for @customersFound.
@@ -1463,7 +1463,7 @@ abstract class AppLocalizations {
   /// No description provided for @newCustomer.
   ///
   /// In en, this message translates to:
-  /// **'New'**
+  /// **'New Customer'**
   String get newCustomer;
 
   /// No description provided for @regular.
@@ -1607,7 +1607,7 @@ abstract class AppLocalizations {
   /// No description provided for @emailLabel.
   ///
   /// In en, this message translates to:
-  /// **'Email Address'**
+  /// **'Email'**
   String get emailLabel;
 
   /// No description provided for @add.
@@ -1685,7 +1685,7 @@ abstract class AppLocalizations {
   /// No description provided for @expenseTitle.
   ///
   /// In en, this message translates to:
-  /// **'Expense Title'**
+  /// **'Title'**
   String get expenseTitle;
 
   /// No description provided for @expenseAmount.
@@ -1697,7 +1697,7 @@ abstract class AppLocalizations {
   /// No description provided for @expenseDate.
   ///
   /// In en, this message translates to:
-  /// **'Due Date'**
+  /// **'Date'**
   String get expenseDate;
 
   /// No description provided for @expenseCategory.
@@ -1871,13 +1871,13 @@ abstract class AppLocalizations {
   /// No description provided for @searchPromotionPlaceholder.
   ///
   /// In en, this message translates to:
-  /// **'Search by title or description...'**
+  /// **'Search promotions...'**
   String get searchPromotionPlaceholder;
 
   /// No description provided for @allPromotions.
   ///
   /// In en, this message translates to:
-  /// **'All'**
+  /// **'All Promotions'**
   String get allPromotions;
 
   /// No description provided for @active.
@@ -1925,7 +1925,7 @@ abstract class AppLocalizations {
   /// No description provided for @noPromotionsFound.
   ///
   /// In en, this message translates to:
-  /// **'0 promotion(s) found'**
+  /// **'No promotions found'**
   String get noPromotionsFound;
 
   /// No description provided for @createPromotionTitle.
@@ -2111,7 +2111,7 @@ abstract class AppLocalizations {
   /// No description provided for @activitiesSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Employee activities tracking on the platform'**
+  /// **'View latest activities'**
   String get activitiesSubtitle;
 
   /// No description provided for @allEmployees.
@@ -2527,6 +2527,378 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Enter email address'**
   String get enterEmail;
+
+  /// No description provided for @comingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Coming soon'**
+  String get comingSoon;
+
+  /// No description provided for @goodMorning.
+  ///
+  /// In en, this message translates to:
+  /// **'Good morning, {name}'**
+  String goodMorning(Object name);
+
+  /// No description provided for @itemsHeaderCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} items'**
+  String itemsHeaderCount(Object count);
+
+  /// No description provided for @allCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get allCategories;
+
+  /// No description provided for @statusLow.
+  ///
+  /// In en, this message translates to:
+  /// **'Low'**
+  String get statusLow;
+
+  /// No description provided for @statusAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Available'**
+  String get statusAvailable;
+
+  /// No description provided for @statusMedium.
+  ///
+  /// In en, this message translates to:
+  /// **'Medium'**
+  String get statusMedium;
+
+  /// No description provided for @orderType.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Type'**
+  String get orderType;
+
+  /// No description provided for @vip.
+  ///
+  /// In en, this message translates to:
+  /// **'VIP'**
+  String get vip;
+
+  /// No description provided for @receiptPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt Preview'**
+  String get receiptPreview;
+
+  /// No description provided for @saleSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Sale Successful!'**
+  String get saleSuccess;
+
+  /// No description provided for @orderRecorded.
+  ///
+  /// In en, this message translates to:
+  /// **'Order #{id} has been recorded.'**
+  String orderRecorded(Object id);
+
+  /// No description provided for @editPrices.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Prices'**
+  String get editPrices;
+
+  /// No description provided for @editPricesWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'These changes will not affect the database.'**
+  String get editPricesWarning;
+
+  /// No description provided for @unitPriceLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Unit Price'**
+  String get unitPriceLabel;
+
+  /// No description provided for @newSale.
+  ///
+  /// In en, this message translates to:
+  /// **'New Sale'**
+  String get newSale;
+
+  /// No description provided for @finish.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish'**
+  String get finish;
+
+  /// No description provided for @print.
+  ///
+  /// In en, this message translates to:
+  /// **'Print'**
+  String get print;
+
+  /// No description provided for @preview.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview'**
+  String get preview;
+
+  /// No description provided for @selectCustomerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Customer'**
+  String get selectCustomerTitle;
+
+  /// No description provided for @deleteCustomerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Customer'**
+  String get deleteCustomerTitle;
+
+  /// No description provided for @deleteCustomerConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this customer?'**
+  String get deleteCustomerConfirm;
+
+  /// No description provided for @pageNotImplemented.
+  ///
+  /// In en, this message translates to:
+  /// **'Page {index} not implemented'**
+  String pageNotImplemented(Object index);
+
+  /// No description provided for @noSalesInPeriod.
+  ///
+  /// In en, this message translates to:
+  /// **'No sales for this period'**
+  String get noSalesInPeriod;
+
+  /// No description provided for @soldCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} sold'**
+  String soldCount(Object count);
+
+  /// No description provided for @noProductsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No products found'**
+  String get noProductsFound;
+
+  /// No description provided for @deleteProductConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete \"{name}\"?'**
+  String deleteProductConfirm(Object name);
+
+  /// No description provided for @unknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown'**
+  String get unknown;
+
+  /// No description provided for @analytics.
+  ///
+  /// In en, this message translates to:
+  /// **'Analytics'**
+  String get analytics;
+
+  /// No description provided for @deleteSupplierConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete supplier \"{name}\"?'**
+  String deleteSupplierConfirm(Object name);
+
+  /// No description provided for @deleteEmployeeConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete employee \"{name}\"?'**
+  String deleteEmployeeConfirm(Object name);
+
+  /// No description provided for @noEmployeesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No employees found'**
+  String get noEmployeesFound;
+
+  /// No description provided for @totalDeliveriesCount.
+  ///
+  /// In en, this message translates to:
+  /// **'(Total: {count})'**
+  String totalDeliveriesCount(Object count);
+
+  /// No description provided for @errorGeneric.
+  ///
+  /// In en, this message translates to:
+  /// **'Error: {error}'**
+  String errorGeneric(Object error);
+
+  /// No description provided for @ordersCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} orders'**
+  String ordersCount(Object count);
+
+  /// No description provided for @noSalesToday.
+  ///
+  /// In en, this message translates to:
+  /// **'No sales today'**
+  String get noSalesToday;
+
+  /// No description provided for @noSalesData.
+  ///
+  /// In en, this message translates to:
+  /// **'No sales data found'**
+  String get noSalesData;
+
+  /// No description provided for @noPurchasesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No purchases found'**
+  String get noPurchasesFound;
+
+  /// No description provided for @noMovementsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No movements found'**
+  String get noMovementsFound;
+
+  /// No description provided for @noEmployeeData.
+  ///
+  /// In en, this message translates to:
+  /// **'No employee data found'**
+  String get noEmployeeData;
+
+  /// No description provided for @exportSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Exported to {path}'**
+  String exportSuccess(Object path);
+
+  /// No description provided for @exportFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Export failed: {error}'**
+  String exportFailed(Object error);
+
+  /// No description provided for @employeesReportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Employees'**
+  String get employeesReportTitle;
+
+  /// No description provided for @hourlySalesFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Hourly Sales for {date}'**
+  String hourlySalesFor(Object date);
+
+  /// No description provided for @lastLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Login'**
+  String get lastLogin;
+
+  /// No description provided for @neverLoggedIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Never logged in'**
+  String get neverLoggedIn;
+
+  /// No description provided for @total.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get total;
+
+  /// No description provided for @searchExpensesPlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by title or description...'**
+  String get searchExpensesPlaceholder;
+
+  /// No description provided for @noExpensesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No expenses found'**
+  String get noExpensesFound;
+
+  /// No description provided for @rejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected'**
+  String get rejected;
+
+  /// No description provided for @deleteExpense.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Expense'**
+  String get deleteExpense;
+
+  /// No description provided for @deleteExpenseConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure?'**
+  String get deleteExpenseConfirm;
+
+  /// No description provided for @confirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmation'**
+  String get confirmation;
+
+  /// No description provided for @userRole.
+  ///
+  /// In en, this message translates to:
+  /// **'User'**
+  String get userRole;
+
+  /// No description provided for @deletePromotionConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Do you really want to delete this promotion?'**
+  String get deletePromotionConfirm;
+
+  /// No description provided for @types.
+  ///
+  /// In en, this message translates to:
+  /// **'Types'**
+  String get types;
+
+  /// No description provided for @searchActivitiesPlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Search activities...'**
+  String get searchActivitiesPlaceholder;
+
+  /// No description provided for @noActivitiesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No activities found'**
+  String get noActivitiesFound;
+
+  /// No description provided for @pageIndicator.
+  ///
+  /// In en, this message translates to:
+  /// **'Page {currentPage} / {totalPages}'**
+  String pageIndicator(Object currentPage, Object totalPages);
+
+  /// No description provided for @address.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get address;
+
+  /// No description provided for @settingsSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings saved successfully'**
+  String get settingsSaved;
+
+  /// No description provided for @deleteDeliveryConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this delivery?'**
+  String get deleteDeliveryConfirm;
 }
 
 class _AppLocalizationsDelegate

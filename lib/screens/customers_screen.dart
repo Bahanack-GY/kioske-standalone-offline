@@ -19,7 +19,7 @@ class CustomersScreen extends StatefulWidget {
 class _CustomersScreenState extends State<CustomersScreen> {
   bool _isGridView = true;
   String _searchQuery = "";
-  String _selectedFilter = "Tous"; // "Tous", "Fidèles", "Nouveaux"
+  String _selectedFilter = "all"; // "all", "vip", "new"
 
   @override
   void initState() {
@@ -51,10 +51,10 @@ class _CustomersScreenState extends State<CustomersScreen> {
 
       if (!matchesSearch) return false;
 
-      if (_selectedFilter == "Fidèles" && customer.status != 'vip') {
+      if (_selectedFilter == "vip" && customer.status != 'vip') {
         return false;
       }
-      if (_selectedFilter == "Nouveaux" && customer.status != 'new') {
+      if (_selectedFilter == "new" && customer.status != 'new') {
         return false;
       }
 
@@ -81,7 +81,7 @@ class _CustomersScreenState extends State<CustomersScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(40.0),
                       child: Text(
-                        "No customers found", // Fallback for missing l10n
+                        l10n.noCustomersFound,
                         style: TextStyle(color: Colors.grey.shade500),
                       ),
                     ),
@@ -203,22 +203,22 @@ class _CustomersScreenState extends State<CustomersScreen> {
           Row(
             children: [
               _buildFilterChip(
-                "Tous ($count)",
-                "Tous",
+                "${l10n.all} ($count)",
+                "all",
                 Colors.black,
                 Colors.white,
               ),
               const SizedBox(width: 12),
               _buildFilterChip(
                 "${l10n.loyal} (0)",
-                "Fidèles",
+                "vip",
                 const Color(0xFF10B981),
                 const Color(0xFFD1FAE5),
               ),
               const SizedBox(width: 12),
               _buildFilterChip(
                 "${l10n.newCustomer} (0)",
-                "Nouveaux",
+                "new",
                 const Color(0xFFF97316),
                 const Color(0xFFFFEDD5),
               ),
@@ -476,10 +476,8 @@ class _CustomersScreenState extends State<CustomersScreen> {
                               showDialog(
                                 context: context,
                                 builder: (context) => AlertDialog(
-                                  title: Text('Delete Customer'),
-                                  content: Text(
-                                    'Are you sure you want to delete this customer?',
-                                  ),
+                                  title: Text(l10n.deleteCustomerTitle),
+                                  content: Text(l10n.deleteCustomerConfirm),
                                   actions: [
                                     TextButton(
                                       onPressed: () => Navigator.pop(context),
@@ -502,8 +500,9 @@ class _CustomersScreenState extends State<CustomersScreen> {
                                                   .currentUser
                                                   ?.name,
                                             );
-                                        if (context.mounted)
+                                        if (context.mounted) {
                                           Navigator.pop(context);
+                                        }
                                       },
                                       style: TextButton.styleFrom(
                                         foregroundColor: Colors.red,
@@ -589,8 +588,8 @@ class _CustomersScreenState extends State<CustomersScreen> {
                 border: Border.all(color: Colors.grey.shade200),
               ),
               child: DataTable(
-                headingRowColor: MaterialStateProperty.all(Colors.grey.shade50),
-                dataRowColor: MaterialStateProperty.all(Colors.white),
+                headingRowColor: WidgetStateProperty.all(Colors.grey.shade50),
+                dataRowColor: WidgetStateProperty.all(Colors.white),
                 columnSpacing: 24,
                 horizontalMargin: 24,
                 columns: [
@@ -701,8 +700,8 @@ class _CustomersScreenState extends State<CustomersScreen> {
                                   showDialog(
                                     context: context,
                                     builder: (context) => AlertDialog(
-                                      title: Text('Delete Customer'),
-                                      content: Text('Are you sure?'),
+                                      title: Text(l10n.deleteCustomerTitle),
+                                      content: Text(l10n.deleteCustomerConfirm),
                                       actions: [
                                         TextButton(
                                           onPressed: () =>
@@ -726,8 +725,9 @@ class _CustomersScreenState extends State<CustomersScreen> {
                                                       .currentUser
                                                       ?.name,
                                                 );
-                                            if (context.mounted)
+                                            if (context.mounted) {
                                               Navigator.pop(context);
+                                            }
                                           },
                                           style: TextButton.styleFrom(
                                             foregroundColor: Colors.red,

@@ -18,8 +18,7 @@ class ExpensesScreen extends StatefulWidget {
 class _ExpensesScreenState extends State<ExpensesScreen> {
   bool _isGridView = true;
   String _searchQuery = "";
-  String _selectedFilter =
-      "Toutes"; // "Toutes", "Payées", "En attente", "En retard"
+  String _selectedFilter = "all"; // "all", "approved", "pending", "overdue"
   String _selectedCategory = "Toutes";
 
   @override
@@ -50,15 +49,13 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
       if (!matchesSearch) return false;
 
       // Status mapping: provider statuses are 'pending', 'approved', 'rejected'
-      // UI filters are "Payées", "En attente", "En retard"
-      if (_selectedFilter == "Payées" && expense.status != 'approved') {
+      if (_selectedFilter == "approved" && expense.status != 'approved') {
         return false;
       }
-      if (_selectedFilter == "En attente" && expense.status != 'pending') {
+      if (_selectedFilter == "pending" && expense.status != 'pending') {
         return false;
       }
-      // Assuming 'overdue' is not yet implemented in backend, keeping logic similar or simplified
-      if (_selectedFilter == "En retard" && expense.status != 'overdue') {
+      if (_selectedFilter == "overdue" && expense.status != 'overdue') {
         return false;
       }
 
@@ -95,7 +92,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(40.0),
                       child: Text(
-                        "No expenses found", // Needs l10n
+                        l10n.noExpensesFound,
                         style: TextStyle(color: Colors.grey.shade500),
                       ),
                     ),
@@ -323,7 +320,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
           TextField(
             onChanged: (value) => setState(() => _searchQuery = value),
             decoration: InputDecoration(
-              hintText: "Rechercher par titre ou description...",
+              hintText: l10n.searchExpensesPlaceholder,
               prefixIcon: const Icon(Icons.search, color: Colors.grey),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
@@ -340,29 +337,29 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
           Row(
             children: [
               _buildFilterChip(
-                "Toutes (6)",
-                "Toutes",
+                "${l10n.all} ($count)",
+                "all",
                 Colors.black,
                 Colors.white,
               ),
               const SizedBox(width: 8),
               _buildFilterChip(
-                "Payées (0)",
-                "Payées",
+                "${l10n.paid} (0)", // Dynamic count logic not implemented in original
+                "approved",
                 Colors.green,
                 Colors.green.shade50,
               ),
               const SizedBox(width: 8),
               _buildFilterChip(
-                "En attente (6)",
-                "En attente",
+                "${l10n.pending} (6)", // Dynamic count logic not implemented in original
+                "pending",
                 Colors.orange,
                 Colors.orange.shade50,
               ),
               const SizedBox(width: 8),
               _buildFilterChip(
-                "En retard (0)",
-                "En retard",
+                "${l10n.overdue} (0)", // Dynamic count logic not implemented in original
+                "overdue",
                 Colors.red,
                 Colors.red.shade50,
               ),
@@ -391,7 +388,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
           ),
           const SizedBox(height: 12),
           Text(
-            "$count charge(s) trouvée(s)",
+            "$count charge(s)", // Simple for now
             style: const TextStyle(color: Colors.grey, fontSize: 13),
           ),
         ],
@@ -453,9 +450,9 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
     return LayoutBuilder(
       builder: (context, constraints) {
         int crossAxisCount = 1;
-        if (constraints.maxWidth > 1200)
+        if (constraints.maxWidth > 1200) {
           crossAxisCount = 3;
-        else if (constraints.maxWidth > 800)
+        } else if (constraints.maxWidth > 800)
           crossAxisCount = 2;
 
         return GridView.builder(
@@ -488,7 +485,7 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
     } else if (expense.status == 'rejected') {
       statusColor = Colors.red;
       statusBg = Colors.red.shade50;
-      statusText = 'Rejected';
+      statusText = l10n.rejected;
     } else if (expense.status == 'overdue') {
       statusColor = Colors.red;
       statusBg = Colors.red.shade50;
@@ -659,8 +656,8 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
                     showDialog(
                       context: context,
                       builder: (context) => AlertDialog(
-                        title: Text('Delete Expense'),
-                        content: Text('Are you sure?'),
+                        title: Text(l10n.deleteExpense),
+                        content: Text(l10n.deleteExpenseConfirm),
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.pop(context),
@@ -760,8 +757,8 @@ class _ExpensesScreenState extends State<ExpensesScreen> {
                 border: Border.all(color: Colors.grey.shade200),
               ),
               child: DataTable(
-                headingRowColor: MaterialStateProperty.all(Colors.grey.shade50),
-                dataRowColor: MaterialStateProperty.all(Colors.white),
+                headingRowColor: WidgetStateProperty.all(Colors.grey.shade50),
+                dataRowColor: WidgetStateProperty.all(Colors.white),
                 columnSpacing: 24,
                 horizontalMargin: 24,
                 columns: [

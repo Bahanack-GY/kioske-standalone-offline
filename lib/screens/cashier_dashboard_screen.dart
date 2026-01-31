@@ -80,7 +80,7 @@ class _CashierDashboardScreenState extends State<CashierDashboardScreen> {
                 : _selectedScreenIndex == 1
                 ? const CustomersScreen(isCashierView: true)
                 : Center(
-                    child: Text('Coming Soon'),
+                    child: Text(l10n.comingSoon),
                   ), // Placeholder for othersHome
           ),
 
@@ -222,7 +222,7 @@ class _CashierDashboardScreenState extends State<CashierDashboardScreen> {
               Row(
                 children: [
                   Text(
-                    'Good morning, ${currentUser?.name ?? 'User'}',
+                    l10n.goodMorning(currentUser?.name ?? 'User'),
                     style: TextStyle(
                       color: Colors.green.shade600,
                       fontWeight: FontWeight.w500,
@@ -237,7 +237,7 @@ class _CashierDashboardScreenState extends State<CashierDashboardScreen> {
               ),
               const SizedBox(height: 8),
               Text(
-                'La cave de simbock (${productProvider.totalCount} items)',
+                'La cave de simbock (${l10n.itemsHeaderCount(productProvider.totalCount)})',
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -283,6 +283,7 @@ class _CashierDashboardScreenState extends State<CashierDashboardScreen> {
     final categoryProvider = context.watch<CategoryProvider>();
     final productProvider = context.watch<ProductProvider>();
     final categories = categoryProvider.categories;
+    final l10n = AppLocalizations.of(context)!;
 
     return SizedBox(
       height: 50,
@@ -311,7 +312,7 @@ class _CashierDashboardScreenState extends State<CashierDashboardScreen> {
                     color: Colors.black87,
                   ), // Generic icon
             label: Text(
-              isAll ? 'All' : category!.name,
+              isAll ? l10n.allCategories : category!.name,
               style: TextStyle(
                 color: isSelected ? Colors.white : Colors.black87,
                 fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
@@ -343,15 +344,15 @@ class _CashierDashboardScreenState extends State<CashierDashboardScreen> {
     switch (product.status) {
       case 'low':
         statusColor = const Color(0xFFFF5252); // Red/Pink
-        statusText = 'Faible'; // Mock localization
+        statusText = l10n.statusLow; // Mock localization
         break;
       case 'available':
         statusColor = const Color(0xFF10B981); // Green
-        statusText = 'Disponible';
+        statusText = l10n.statusAvailable;
         break;
       default:
         statusColor = Colors.orange;
-        statusText = 'Moyen';
+        statusText = l10n.statusMedium;
     }
 
     final isOutOfStock = product.stock <= 0;

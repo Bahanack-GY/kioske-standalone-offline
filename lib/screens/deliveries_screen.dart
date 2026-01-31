@@ -494,9 +494,7 @@ class _DeliveriesScreenState extends State<DeliveriesScreen> {
                         context: context,
                         builder: (ctx) => AlertDialog(
                           title: Text(l10n.delete),
-                          content: const Text(
-                            "Are you sure you want to delete this delivery?",
-                          ),
+                          content: Text(l10n.deleteDeliveryConfirm),
                           actions: [
                             TextButton(
                               onPressed: () => Navigator.pop(ctx),
@@ -776,9 +774,7 @@ class _DeliveriesScreenState extends State<DeliveriesScreen> {
                                     context: context,
                                     builder: (ctx) => AlertDialog(
                                       title: Text(l10n.delete),
-                                      content: const Text(
-                                        "Are you sure you want to delete this delivery?",
-                                      ),
+                                      content: Text(l10n.deleteDeliveryConfirm),
                                       actions: [
                                         TextButton(
                                           onPressed: () => Navigator.pop(ctx),

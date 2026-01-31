@@ -496,10 +496,12 @@ class _StockAnalyticsModalState extends State<StockAnalyticsModal> {
             sideTitles: SideTitles(
               showTitles: true,
               getTitlesWidget: (val, meta) {
-                if (val == 0)
+                if (val == 0) {
                   return const Text('Entrée', style: TextStyle(fontSize: 10));
-                if (val == 1)
+                }
+                if (val == 1) {
                   return const Text('Sortie', style: TextStyle(fontSize: 10));
+                }
                 return const SizedBox();
               },
             ),

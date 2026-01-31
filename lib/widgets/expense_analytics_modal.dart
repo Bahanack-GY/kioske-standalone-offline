@@ -356,31 +356,36 @@ class _ExpenseAnalyticsModalState extends State<ExpenseAnalyticsModal> {
                       showTitles: true,
                       reservedSize: 45,
                       getTitlesWidget: (value, meta) {
-                        if (value == 0)
+                        if (value == 0) {
                           return const Text(
                             '0',
                             style: TextStyle(color: Colors.grey, fontSize: 10),
                           );
-                        if (value == 20000)
+                        }
+                        if (value == 20000) {
                           return const Text(
                             '20000',
                             style: TextStyle(color: Colors.grey, fontSize: 10),
                           );
-                        if (value == 40000)
+                        }
+                        if (value == 40000) {
                           return const Text(
                             '40000',
                             style: TextStyle(color: Colors.grey, fontSize: 10),
                           );
-                        if (value == 60000)
+                        }
+                        if (value == 60000) {
                           return const Text(
                             '60000',
                             style: TextStyle(color: Colors.grey, fontSize: 10),
                           );
-                        if (value == 80000)
+                        }
+                        if (value == 80000) {
                           return const Text(
                             '80000',
                             style: TextStyle(color: Colors.grey, fontSize: 10),
                           );
+                        }
                         return Container();
                       },
                     ),

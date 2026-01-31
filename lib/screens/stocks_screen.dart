@@ -251,7 +251,7 @@ class _StocksScreenState extends State<StocksScreen> {
                               ),
                               const SizedBox(height: 16),
                               Text(
-                                'Aucun produit trouvé',
+                                l10n.noProductsFound,
                                 style: TextStyle(
                                   fontSize: 18,
                                   color: Colors.grey.shade600,
@@ -325,16 +325,16 @@ class _StocksScreenState extends State<StocksScreen> {
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
-                const DataColumn(
+                DataColumn(
                   label: Text(
-                    "Status",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    l10n.status,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
-                const DataColumn(
+                DataColumn(
                   label: Text(
-                    "Actions",
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    l10n.actionsColumn,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
               ],

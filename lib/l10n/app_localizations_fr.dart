@@ -66,7 +66,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get netProfit => 'Bénéfice Net';
 
   @override
-  String get totalExpenses => 'Total des charges';
+  String get totalExpenses => 'Total Dépenses';
 
   @override
   String get hourlySales => 'Ventes horaires';
@@ -144,8 +144,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get table => 'Tableau';
 
   @override
-  String get searchStockPlaceholder =>
-      'Rechercher par nom, catégorie ou fournisseur...';
+  String get searchStockPlaceholder => 'Rechercher par nom de produit...';
 
   @override
   String get all => 'Tous';
@@ -160,7 +159,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get lowStock => 'Faible';
 
   @override
-  String get productsFound => 'produit(s) trouvé(s)';
+  String get productsFound => 'Produits trouvés';
 
   @override
   String get currentStock => 'Stock actuel';
@@ -409,10 +408,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get deliveryManagement => 'Gestion des Livraisons';
 
   @override
-  String get recentDeliveriesFirst => 'Livraisons les plus récentes en premier';
+  String get recentDeliveriesFirst => 'Livraisons récentes d\'abord';
 
   @override
-  String get newDelivery => 'Nouvelle livraison';
+  String get newDelivery => 'Nouvelle Livraison';
 
   @override
   String get searchBySupplier => 'Rechercher par fournisseur...';
@@ -427,7 +426,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get cancelled => 'Annulées';
 
   @override
-  String get deliveriesFound => 'livraison(s) trouvée(s)';
+  String get deliveriesFound => 'Livraisons trouvées';
 
   @override
   String get noDeliveriesFound => 'Aucune livraison trouvée';
@@ -611,13 +610,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get deliveredProducts => 'Produits livrés';
 
   @override
-  String get confirmDelivery => 'Confirmer livraison';
+  String get confirmDelivery => 'Confirmer la Livraison';
 
   @override
   String get vendor => 'Fournisseur';
 
   @override
-  String get deliveryDate => 'Date de livraison';
+  String get deliveryDate => 'Date de Livraison';
 
   @override
   String get selectProducts => 'Sélectionner les produits';
@@ -690,10 +689,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get customersManagement => 'Gestion des Clients';
 
   @override
-  String get addCustomer => 'Ajouter Client';
+  String get addCustomer => 'Ajouter un Client';
 
   @override
-  String get searchCustomerPlaceholder => 'Rechercher des clients...';
+  String get searchCustomerPlaceholder => 'Rechercher par nom, téléphone...';
 
   @override
   String customersFound(Object count) {
@@ -710,16 +709,16 @@ class AppLocalizationsFr extends AppLocalizations {
   String get loyal => 'Fidèle';
 
   @override
-  String get newCustomer => 'Nouveau';
+  String get newCustomer => 'Nouveau Client';
 
   @override
   String get regular => 'Régulier';
 
   @override
-  String get totalPurchases => 'Nombre d\'achats';
+  String get totalPurchases => 'Achats Totaux';
 
   @override
-  String get memberSince => 'Membre depuis';
+  String get memberSince => 'Membre Depuis';
 
   @override
   String get customerAnalytics => 'Analyses du Client';
@@ -782,7 +781,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get neighborhoodLabel => 'Quartier';
 
   @override
-  String get emailLabel => 'Adresse Email';
+  String get emailLabel => 'Email';
 
   @override
   String get add => 'Ajouter';
@@ -803,13 +802,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get addExpense => 'Ajouter une charge';
 
   @override
-  String get paidExpenses => 'Charges payées';
+  String get paidExpenses => 'Dépenses Payées';
 
   @override
-  String get pendingExpenses => 'En attente';
+  String get pendingExpenses => 'Dépenses En Attente';
 
   @override
-  String get overdueExpenses => 'En retard';
+  String get overdueExpenses => 'Dépenses En Retard';
 
   @override
   String get paid => 'Payée';
@@ -827,7 +826,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get expenseAmount => 'Montant';
 
   @override
-  String get expenseDate => 'Date d\'échéance';
+  String get expenseDate => 'Date';
 
   @override
   String get expenseCategory => 'Catégorie';
@@ -902,32 +901,31 @@ class AppLocalizationsFr extends AppLocalizations {
   String get createPromotion => 'Créer une promotion';
 
   @override
-  String get activePromotions => 'Promotions actives';
+  String get activePromotions => 'Promotions Actives';
 
   @override
-  String get expiredPromotions => 'Promotions expirées';
+  String get expiredPromotions => 'Promotions Expirées';
 
   @override
-  String get totalReductions => 'Total des réductions';
+  String get totalReductions => 'Réductions Totales';
 
   @override
-  String get totalPromotions => 'Total des promotions';
+  String get totalPromotions => 'Total Promotions';
 
   @override
-  String get searchPromotionPlaceholder =>
-      'Rechercher par titre ou description...';
+  String get searchPromotionPlaceholder => 'Rechercher des promotions...';
 
   @override
-  String get allPromotions => 'Tous';
+  String get allPromotions => 'Toutes Promotions';
 
   @override
-  String get active => 'Actives';
+  String get active => 'Active';
 
   @override
-  String get expired => 'Expirées';
+  String get expired => 'Expirée';
 
   @override
-  String get inactive => 'Inactives';
+  String get inactive => 'Inactive';
 
   @override
   String get promotionType => 'Type de promotion';
@@ -936,13 +934,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get percentage => 'Pourcentage';
 
   @override
-  String get fixedAmount => 'Montant fixe';
+  String get fixedAmount => 'Montant Fixe';
 
   @override
-  String get buyXGetY => 'Achetez X, obtenez Y';
+  String get buyXGetY => 'Achetez X Obtenez Y';
 
   @override
-  String get noPromotionsFound => '0 promotion(s) trouvée(s)';
+  String get noPromotionsFound => 'Aucune promotion trouvée';
 
   @override
   String get createPromotionTitle => 'Créer une nouvelle promotion';
@@ -1035,8 +1033,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get activitiesTitle => 'Activités';
 
   @override
-  String get activitiesSubtitle =>
-      'Suivi des activités des employés sur la plateforme';
+  String get activitiesSubtitle => 'Voir les dernières activités';
 
   @override
   String get allEmployees => 'Tous les employés';
@@ -1094,13 +1091,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get settingsTitle => 'Paramètres';
 
   @override
-  String get generalSettings => 'Paramètres généraux';
+  String get generalSettings => 'Paramètres Généraux';
 
   @override
-  String get shopName => 'Nom de la boutique';
+  String get shopName => 'Nom de la Boutique';
 
   @override
-  String get shopLogo => 'Logo de la boutique';
+  String get shopLogo => 'Logo de la Boutique';
 
   @override
   String get currency => 'Devise';
@@ -1112,25 +1109,25 @@ class AppLocalizationsFr extends AppLocalizations {
   String get security => 'Sécurité';
 
   @override
-  String get changePassword => 'Changer le mot de passe';
+  String get changePassword => 'Changer le Mot de Passe';
 
   @override
-  String get oldPassword => 'Ancien mot de passe';
+  String get oldPassword => 'Ancien Mot de Passe';
 
   @override
-  String get newPassword => 'Nouveau mot de passe';
+  String get newPassword => 'Nouveau Mot de Passe';
 
   @override
-  String get confirmPassword => 'Confirmer le mot de passe';
+  String get confirmPassword => 'Confirmer le Mot de Passe';
 
   @override
-  String get saveSettings => 'Enregistrer les paramètres';
+  String get saveSettings => 'Enregistrer les Paramètres';
 
   @override
   String get uploadLogo => 'Télécharger le logo';
 
   @override
-  String get changeLogo => 'Changer le logo';
+  String get changeLogo => 'Changer le Logo';
 
   @override
   String get loginTitle => 'Connexion';
@@ -1249,4 +1246,225 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get enterEmail => 'Entrer l\'email';
+
+  @override
+  String get comingSoon => 'Bientôt disponible';
+
+  @override
+  String goodMorning(Object name) {
+    return 'Bonjour, $name';
+  }
+
+  @override
+  String itemsHeaderCount(Object count) {
+    return '$count articles';
+  }
+
+  @override
+  String get allCategories => 'Tout';
+
+  @override
+  String get statusLow => 'Faible';
+
+  @override
+  String get statusAvailable => 'Disponible';
+
+  @override
+  String get statusMedium => 'Moyen';
+
+  @override
+  String get orderType => 'Type de commande';
+
+  @override
+  String get vip => 'VIP';
+
+  @override
+  String get receiptPreview => 'Aperçu du reçu';
+
+  @override
+  String get saleSuccess => 'Vente réussie !';
+
+  @override
+  String orderRecorded(Object id) {
+    return 'La commande #$id a été enregistrée.';
+  }
+
+  @override
+  String get editPrices => 'Modifier les prix';
+
+  @override
+  String get editPricesWarning =>
+      'Ces modifications n\'affecteront pas la base de données.';
+
+  @override
+  String get unitPriceLabel => 'Prix Unit.';
+
+  @override
+  String get newSale => 'Nouvelle vente';
+
+  @override
+  String get finish => 'Terminer';
+
+  @override
+  String get print => 'Imprimer';
+
+  @override
+  String get preview => 'Aperçu';
+
+  @override
+  String get selectCustomerTitle => 'Sélectionner un client';
+
+  @override
+  String get deleteCustomerTitle => 'Supprimer le Client';
+
+  @override
+  String get deleteCustomerConfirm =>
+      'Êtes-vous sûr de vouloir supprimer ce client ?';
+
+  @override
+  String pageNotImplemented(Object index) {
+    return 'Page $index non implémentée';
+  }
+
+  @override
+  String get noSalesInPeriod => 'Aucune vente pour cette période';
+
+  @override
+  String soldCount(Object count) {
+    return '$count vendus';
+  }
+
+  @override
+  String get noProductsFound => 'Aucun produit trouvé';
+
+  @override
+  String deleteProductConfirm(Object name) {
+    return 'Êtes-vous sûr de vouloir supprimer \"$name\" ?';
+  }
+
+  @override
+  String get unknown => 'Inconnu';
+
+  @override
+  String get analytics => 'Analytique';
+
+  @override
+  String deleteSupplierConfirm(Object name) {
+    return 'Supprimer le fournisseur \"$name\" ?';
+  }
+
+  @override
+  String deleteEmployeeConfirm(Object name) {
+    return 'Supprimer l\'employé \"$name\" ?';
+  }
+
+  @override
+  String get noEmployeesFound => 'Aucun employé trouvé';
+
+  @override
+  String totalDeliveriesCount(Object count) {
+    return '(Total : $count)';
+  }
+
+  @override
+  String errorGeneric(Object error) {
+    return 'Erreur : $error';
+  }
+
+  @override
+  String ordersCount(Object count) {
+    return '$count commandes';
+  }
+
+  @override
+  String get noSalesToday => 'Aucune vente aujourd\'hui';
+
+  @override
+  String get noSalesData => 'Aucune donnée de vente trouvée';
+
+  @override
+  String get noPurchasesFound => 'Aucun achat trouvé';
+
+  @override
+  String get noMovementsFound => 'Aucun mouvement trouvé';
+
+  @override
+  String get noEmployeeData => 'Aucune donnée employé trouvée';
+
+  @override
+  String exportSuccess(Object path) {
+    return 'Exporté vers $path';
+  }
+
+  @override
+  String exportFailed(Object error) {
+    return 'Export échoué : $error';
+  }
+
+  @override
+  String get employeesReportTitle => 'Employés';
+
+  @override
+  String hourlySalesFor(Object date) {
+    return 'Ventes horaires pour $date';
+  }
+
+  @override
+  String get lastLogin => 'Dernière connexion';
+
+  @override
+  String get neverLoggedIn => 'Jamais connecté';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get searchExpensesPlaceholder =>
+      'Rechercher par titre ou description...';
+
+  @override
+  String get noExpensesFound => 'Aucune dépense trouvée';
+
+  @override
+  String get rejected => 'Rejeté';
+
+  @override
+  String get deleteExpense => 'Supprimer la dépense';
+
+  @override
+  String get deleteExpenseConfirm => 'Êtes-vous sûr ?';
+
+  @override
+  String get confirmation => 'Confirmation';
+
+  @override
+  String get userRole => 'Utilisateur';
+
+  @override
+  String get deletePromotionConfirm =>
+      'Voulez-vous vraiment supprimer cette promotion ?';
+
+  @override
+  String get types => 'Types';
+
+  @override
+  String get searchActivitiesPlaceholder => 'Rechercher des activités...';
+
+  @override
+  String get noActivitiesFound => 'Aucune activité trouvée';
+
+  @override
+  String pageIndicator(Object currentPage, Object totalPages) {
+    return 'Page $currentPage / $totalPages';
+  }
+
+  @override
+  String get address => 'Adresse';
+
+  @override
+  String get settingsSaved => 'Paramètres enregistrés avec succès';
+
+  @override
+  String get deleteDeliveryConfirm =>
+      'Êtes-vous sûr de vouloir supprimer cette livraison ?';
 }
