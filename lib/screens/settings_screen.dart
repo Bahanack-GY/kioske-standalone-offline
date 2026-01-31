@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:kioske/services/backup_service.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:kioske/l10n/app_localizations.dart';
@@ -494,6 +495,67 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Widget _buildSecurityCard(AppLocalizations l10n) {
+    return Column(
+      children: [
+        Card(
+          elevation: 0,
+          color: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+            side: BorderSide(color: Colors.grey.shade200),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.security,
+                      color: Color(0xFF7C3AED),
+                    ), // Purple
+                    const SizedBox(width: 8),
+                    Text(
+                      l10n.security,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                const Divider(height: 32),
+
+                Text(
+                  l10n.changePassword,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF1A2B3C),
+                  ),
+                ),
+                const SizedBox(height: 16),
+
+                _buildPasswordField(l10n.oldPassword, _oldPasswordController),
+                const SizedBox(height: 16),
+                _buildPasswordField(l10n.newPassword, _newPasswordController),
+                const SizedBox(height: 16),
+                _buildPasswordField(
+                  l10n.confirmPassword,
+                  _confirmPasswordController,
+                ),
+              ],
+            ),
+          ),
+        ),
+        const SizedBox(height: 24),
+        _buildDatabaseCard(l10n),
+      ],
+    );
+  }
+
+  Widget _buildDatabaseCard(AppLocalizations l10n) {
     return Card(
       elevation: 0,
       color: Colors.white,
@@ -506,38 +568,120 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+            const Row(
               children: [
-                const Icon(Icons.security, color: Color(0xFF7C3AED)), // Purple
-                const SizedBox(width: 8),
+                Icon(Icons.storage, color: Colors.blue),
+                SizedBox(width: 8),
                 Text(
-                  l10n.security,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  "Database Management",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
             const Divider(height: 32),
-
-            Text(
-              l10n.changePassword,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF1A2B3C),
-              ),
+            const Text(
+              "Backup & Restore data",
+              style: TextStyle(fontSize: 14, color: Colors.grey),
             ),
             const SizedBox(height: 16),
+            Row(
+              children: [
+                Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: () async {
+                      try {
+                        // Show loading
+                        showDialog(
+                          context: context,
+                          barrierDismissible: false,
+                          builder: (c) =>
+                              const Center(child: CircularProgressIndicator()),
+                        );
 
-            _buildPasswordField(l10n.oldPassword, _oldPasswordController),
-            const SizedBox(height: 16),
-            _buildPasswordField(l10n.newPassword, _newPasswordController),
-            const SizedBox(height: 16),
-            _buildPasswordField(
-              l10n.confirmPassword,
-              _confirmPasswordController,
+                        final path = await BackupService().createBackup();
+
+                        // Hide loading
+                        if (mounted) Navigator.pop(context);
+
+                        if (mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                path != null
+                                    ? 'Backup saved to $path'
+                                    : 'Backup cancelled',
+                              ),
+                            ),
+                          );
+                        }
+                      } catch (e) {
+                        if (mounted) {
+                          Navigator.pop(context);
+                        } // Hide loading on error
+                        if (mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Error: $e'),
+                              backgroundColor: Colors.red,
+                            ),
+                          );
+                        }
+                      }
+                    },
+                    icon: const Icon(Icons.download),
+                    label: const Text("Backup"),
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: () async {
+                      try {
+                        // Confirm logic can be here, but restore shows picker first
+
+                        final result = await BackupService().restoreBackup();
+
+                        if (mounted) {
+                          if (result['success'] == true) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(result['message']),
+                                backgroundColor: Colors.green,
+                              ),
+                            );
+                          } else {
+                            if (result['message'] != 'No file selected') {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(result['message']),
+                                  backgroundColor: Colors.red,
+                                ),
+                              );
+                            }
+                          }
+                        }
+                      } catch (e) {
+                        if (mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Error: $e'),
+                              backgroundColor: Colors.red,
+                            ),
+                          );
+                        }
+                      }
+                    },
+                    icon: const Icon(Icons.upload),
+                    label: const Text("Restore"),
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
